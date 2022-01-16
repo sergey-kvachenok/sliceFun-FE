@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Grid from '@mui/material/Grid';
@@ -7,14 +7,13 @@ import Grid from '@mui/material/Grid';
 import { useGetShowsQuery } from './store/queries/shows';
 import { AudioPlayer } from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
-
+import Show from './components/Show';
 import SideBar from './components/SideBar';
 import LatestShows from './components/LatestShows';
 
 
-const App = () => {
-  const { data } = useGetShowsQuery(3); // 3 is id of the show
-
+function App() {
+  const { id } = useSelector(({ player }) => player);
   return (
       <>
         <GlobalStyle />
@@ -29,7 +28,7 @@ const App = () => {
           </Routes>
         </Grid>
       </BrowserRouter>
-      <AudioPlayer />
+      {id && <AudioPlayer />}
     </Grid>
         </>
   );

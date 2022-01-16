@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  bottom: 5px;
 
   @media (hover: hover) {
     &:hover {

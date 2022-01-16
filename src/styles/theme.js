@@ -3,10 +3,12 @@ export const colors = {
   yellow: '#ffd200',
   lightPeach: '#ffe3d4',
   coralRed: '#f7484b',
+  blue: '#a9eeed',
   darkBlue: '#3452a5',
   darkBlue1: '#06072d',
   oceanGreen: '#26c9c3',
   opacityGray: '#06072d4f',
+  white: '#fff',
 };
 
 export const breakpoints = {

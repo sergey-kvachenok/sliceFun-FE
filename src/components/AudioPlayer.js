@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
@@ -25,7 +25,7 @@ const getProgressBarBeforeWidth = (currentProgress, duration) => {
 
 const AudioPlayer = ({ audio, image }) => {
   const dispatch = useDispatch();
-  const { isPlaying, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }) => player);
+  const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }) => player);
 
   // references
   const audioPlayer = useRef(); // reference our audio component
@@ -38,31 +38,53 @@ const AudioPlayer = ({ audio, image }) => {
     progressBar.current.max = seconds;
   }, [dispatch, audioPlayer.current?.duration]);
 
-  const togglePlayPause = () => {
-    const prevValue = isPlaying;
-    dispatch(setIsPlaying(!prevValue));
-    if (!prevValue) {
+  const changePlayerCurrentTime = useCallback(() => {
+    dispatch(setCurrentTime(Number(progressBar.current.value)));
+  }, [dispatch]);
+
+  const whilePlaying = useCallback(() => {
+    progressBar.current.value = audioPlayer.current.currentTime;
+    changePlayerCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  }, [changePlayerCurrentTime]);
+
+  const handlePlayPause = useCallback(() => {
+    if (isPlaying) {
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  };
+  }, [whilePlaying, isPlaying, id]); // id for changing episodes
 
-  const whilePlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime;
-    changePlayerCurrentTime();
-    animationRef.current = requestAnimationFrame(whilePlaying);
+  useEffect(() => {
+    handlePlayPause();
+    // if (isPlaying) {
+    //   audioPlayer.current.play();
+    //   animationRef.current = requestAnimationFrame(whilePlaying);
+    // } else {
+    //   audioPlayer.current.pause();
+    //   cancelAnimationFrame(animationRef.current);
+    // }
+  }, [handlePlayPause]);
+
+  const togglePlayPause = () => {
+    // const prevValue = isPlaying;
+    dispatch(setIsPlaying(!isPlaying));
+    handlePlayPause(isPlaying);
+    // if (!prevValue) {
+    //   audioPlayer.current.play();
+    //   animationRef.current = requestAnimationFrame(whilePlaying);
+    // } else {
+    //   audioPlayer.current.pause();
+    //   cancelAnimationFrame(animationRef.current);
+    // }
   };
 
   const changeRange = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
-  };
-
-  const changePlayerCurrentTime = () => {
-    dispatch(setCurrentTime(Number(progressBar.current.value)));
   };
 
   const backTimeshift = () => {
@@ -86,7 +108,7 @@ const AudioPlayer = ({ audio, image }) => {
     <Wrapper>
       <AudioInfo>
         <div className="poster">
-          <img src={imageSrc} alt="Audio poster" />
+          <img src={imageSrc} height="50" width="50" alt="Audio poster" />
         </div>
         <div className="info">
           <p className="title text">{title}</p>
