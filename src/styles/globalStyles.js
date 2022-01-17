@@ -12,9 +12,8 @@ color: ${colors.darkBlue1};
   }
 
   .primary-text {
-    font-family: Montserrat-Medium;
+    font-family: Montserrat-Bold;
     font-size: 16px;
-    font-weight: bold;
     margin: 10px 0;
   }
 
@@ -23,8 +22,8 @@ color: ${colors.darkBlue1};
   }
 
   .secondary-text-bold {
+     font-family: Montserrat-Bold;
     font-size: 12px;
-     font-weight: bold;
   }
 
   .container-padding {

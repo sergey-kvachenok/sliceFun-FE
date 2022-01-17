@@ -17,7 +17,13 @@ export const showsApi = createApi({
       transformResponse: (response, meta, arg) => response,
     }),
     getLibrary: builder.query({
-      query: () => ({ url: `shows/library` }),
+      query: args => {
+        const { category } = args;
+        return {
+          url: `shows/library`,
+          params: { category },
+        };
+      },
       transformResponse: (response, meta, arg) => response,
     }),
     getShowsById: builder.query({

@@ -1,5 +1,6 @@
 import { useGetShowsByIdQuery } from '../../store/queries/shows';
 import styled from 'styled-components';
+import Spinner from '../shared/Spinner';
 import Header from './Header';
 import Headlines from './Headlines';
 import Episodes from './Episodes';
@@ -12,7 +13,10 @@ const Wrapper = styled.div`
 const Show = ({ id = 3 }) => {
   const { data, isLoading } = useGetShowsByIdQuery(id);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   const { verified, mainImage, title, headlines, latest, premium, video } = data;
 
   return (

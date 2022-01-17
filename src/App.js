@@ -8,6 +8,7 @@ import { useGetShowsQuery } from './store/queries/shows';
 import { AudioPlayer } from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
 import Show from './components/Show';
+import Library from './components/Library';
 import SideBar from './components/SideBar';
 import LatestShows from './components/LatestShows';
 

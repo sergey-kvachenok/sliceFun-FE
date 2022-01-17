@@ -49,7 +49,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
 
   return (
     <div className="container-padding">
-      <CustomTabs data={tabs} />
+      <CustomTabs tabs={tabs} />
 
       <div className="primary-text">Latest Episodes</div>
       {latestEpisodes.map(episode => (
