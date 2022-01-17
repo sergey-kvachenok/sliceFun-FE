@@ -40,15 +40,6 @@ const Wrapper = styled.div`
     overflow: auto;
     max-height: 200px;
   }
-
-  @-prefix-keyframes slide {
-    from {
-      height: 0;
-    }
-    to {
-      height: inherit;
-    }
-  }
 `;
 
 const Episode = ({ episode }) => {

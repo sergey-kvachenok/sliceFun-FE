@@ -1,45 +1,73 @@
 import React from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
+import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
+import Button from '../shared/Button';
+import Verified from '../shared/Verified';
+import {colors} from '../../styles/theme'
 
-import { Link } from 'react-router-dom';
+const Wrapper = styled.div`
+ background-image: url(${({ imageSrc }) => imageSrc});
+  height: 250px;
+  position: relative;
+  background-color: ${colors.darkBlue1};
+  background-position: center;
+  background-size: auto;
 
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+  .content-container {
+    display: flex;
+    justify-content: 'space-between';
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+  }
+
+   .header {
+    display: flex;
+    align-items: center;
+  }
+`;
 
 
 const HeadShow = ({ showData }) => {
+  const navigate = useNavigate();
+    const { isPlaying } = useSelector(({ player }) => player);
+
+  const { id, verified, title, category, description, image, mainImage} = showData || {};
+console.log(showData)
+
+const redirectToShow = () => {
+  navigate(`/shows/${id}`)
+}
+
   return (
-    <Grid container spacing={2} sx={{ pt: 25, pb: 5 }} justifyContent='center' alignItems='center'>
-      <Grid item xs={2}>
-        <img src={showData.image} alt='logo' />
-      </Grid>
-      <Grid item xs={10}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant='h4'>
-              {showData.title}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sx={{ display: 'flex', alignItems: 'center' }}>
-            <Checkbox checked={showData.isVerified} />
-            <Typography>
-              {showData.isVerified ? 'Verified' : 'Not Verified'}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Link to={showData.link}>
-              <Button variant='outlined'>Go to show</Button>
-            </Link>
-            <IconButton size='large'>
-              <PlayCircleFilledWhiteIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+    <Wrapper imageSrc={mainImage}>
+    <div className="info">
+      <div className="content-container">
+        <div className="header-poster">
+          <img height="120" width="120" src={image} alt="Podcast poster" />
+        </div>
+
+        <div className="info">
+          <Verified verified={verified} />
+
+          <div className="primary-text">{title}</div>
+
+          <div className="header">
+          {isPlaying ? (
+            <PauseCircleOutlineOutlinedIcon fontSize="large" className="pointer" onClick={() => {}} />
+          ) : (
+            <PlayCircleOutlinedIcon fontSize="large" className="pointer" onClick={() => {}} />
+          )}
+
+          <Button variant="outlined" title="Go to Show" customStyles={{ mr: 2 }} onClick={redirectToShow}/>
+        </div>
+        </div>
+      </div>
+      </div>
+    </Wrapper>
   );
 };
 

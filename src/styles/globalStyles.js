@@ -4,6 +4,8 @@ import { breakpoints, colors } from './theme';
 const GlobalStyle = createGlobalStyle`
 body {
 color: ${colors.darkBlue1};
+max-width: 1200px;
+margin: 0 auto;
 }
   .xs-hidden {
     @media (max-width: ${breakpoints.xs}) {
@@ -28,6 +30,10 @@ color: ${colors.darkBlue1};
 
   .container-padding {
     padding: 15px;
+
+    @media (max-width: ${breakpoints.xs}) {
+        padding: 15px 5px;
+    }
   }
 
   .pointer {
@@ -36,6 +42,18 @@ color: ${colors.darkBlue1};
 
   .display-flex {
     display: flex;
+  }
+
+  .header-poster {
+    height: 120px;
+    width: 120px;
+    margin-right: 15px;
+
+    img {
+      height: inherit;
+      width: inherit;
+      object-fit: cover;
+    }
   }
 `;
 

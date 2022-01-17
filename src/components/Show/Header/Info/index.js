@@ -3,7 +3,7 @@ import Button from '../../../shared/Button';
 import Verified from '../../../shared/Verified';
 
 const Wrapper = styled.div`
-  .poster {
+  /* .poster {
     height: 120px;
     width: 120px;
     margin-right: 15px;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
       width: inherit;
       object-fit: cover;
     }
-  }
+  } */
 
   .content-container {
     display: flex;
@@ -25,7 +25,7 @@ const Info = ({ imageSrc, title, verified }) => {
   return (
     <Wrapper className="info">
       <div className="content-container">
-        <div className="poster">
+        <div className="header-poster">
           <img height="120" width="120" src={imageSrc} alt="Podcast poster" />
         </div>
 

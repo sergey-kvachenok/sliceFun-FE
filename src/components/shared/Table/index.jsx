@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 const CustomTable = ({ rows = [], columns = [] }) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="Table">
+      <Table size="small" aria-label="Table">
         <TableHead>
           <TableRow>
             {columns.map(({ label }, index) => (

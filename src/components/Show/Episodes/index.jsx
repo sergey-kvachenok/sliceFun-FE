@@ -67,7 +67,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
         <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
       </ButtonContainer>
 
-      <div className="primary-text">Latest Viseo</div>
+      <div className="primary-text">Latest Video</div>
       {video.map(episode => (
         <VideoEpisode episode={episode} />
       ))}
