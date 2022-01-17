@@ -28,8 +28,8 @@ const Header = ({ mainImage, title, verified }) => {
       <Panel>
         {/* Search */}
         <div className="buttons">
-          <Button title="Manage subscription" customStyles={{ mr: 2 }} />
-          <Button title="Share" />
+          <Button variant="outlined" title="Manage subscription" customStyles={{ mr: 2 }} />
+          <Button variant="outlined" title="Share" />
         </div>
       </Panel>
       <Info imageSrc={mainImage} title={title} verified={verified} />

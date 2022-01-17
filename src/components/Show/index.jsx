@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 
 const Show = ({ id = 3 }) => {
   const { data, isLoading } = useGetShowsByIdQuery(id);
+
   if (isLoading) return <div>Loading...</div>;
   const { verified, mainImage, title, headlines, latest, premium, video } = data;
 

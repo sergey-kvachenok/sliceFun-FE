@@ -5,10 +5,13 @@ import Verified from '../../../shared/Verified';
 const Wrapper = styled.div`
   .poster {
     height: 120px;
+    width: 120px;
     margin-right: 15px;
 
     img {
       height: inherit;
+      width: inherit;
+      object-fit: cover;
     }
   }
 
@@ -23,15 +26,15 @@ const Info = ({ imageSrc, title, verified }) => {
     <Wrapper className="info">
       <div className="content-container">
         <div className="poster">
-          <img src={imageSrc} alt="Podcast poster" />
+          <img height="120" width="120" src={imageSrc} alt="Podcast poster" />
         </div>
 
         <div className="info">
-          <Verified />
+          <Verified verified={verified} />
 
           <div className="primary-text">{title}</div>
-          <Button title="Follow" customStyles={{ mr: 2 }} />
-          <Button title="Some text is here" customStyles={{ mr: 2 }} />
+          <Button variant="outlined" title="Follow" customStyles={{ mr: 2 }} />
+          <Button variant="outlined" title="Some text is here" customStyles={{ mr: 2 }} />
         </div>
       </div>
     </Wrapper>

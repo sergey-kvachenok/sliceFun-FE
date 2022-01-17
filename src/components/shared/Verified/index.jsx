@@ -7,7 +7,8 @@ const Wrapper = styled.div`
   align-items: center;
 
   .verified-box {
-    background-color: ${() => colors.blue};
+    background-color: ${() => colors.darkBlue};
+    border-radius: 3px;
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -18,12 +19,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Verified = () => {
+const Verified = ({ verified }) => {
   return (
     <Wrapper>
-      <div className="verified-box">
-        <CloseSharpIcon />
-      </div>
+      <div className="verified-box">{verified && <CloseSharpIcon />}</div>
       <span className="secondary-text">Verified</span>
     </Wrapper>
   );

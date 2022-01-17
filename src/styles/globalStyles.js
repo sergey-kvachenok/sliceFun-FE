@@ -1,7 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { breakpoints } from './theme';
+import { breakpoints, colors } from './theme';
 
 const GlobalStyle = createGlobalStyle`
+body {
+color: ${colors.darkBlue1};
+}
   .xs-hidden {
     @media (max-width: ${breakpoints.xs}) {
         display: none;
@@ -9,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .primary-text {
+    font-family: Montserrat-Medium;
     font-size: 16px;
     font-weight: bold;
     margin: 10px 0;
@@ -29,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
 
   .pointer {
       cursor: pointer;
+  }
+
+  .display-flex {
+    display: flex;
   }
 `;
 

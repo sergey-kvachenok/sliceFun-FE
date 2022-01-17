@@ -2,15 +2,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
-import IconButton from '@mui/material/IconButton';
-
-import * as React from 'react';
-// import { styled } from '@mui/material/styles';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
-
-const img = 'https://slice-fun-podcasts.s3.eu-west-1.amazonaws.com/record-classix/record-classix.jpeg';
+import Button from '../../shared/Button';
+import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 
 const Wrapper = styled.div`
   align-items: baseline;
@@ -33,6 +28,27 @@ const Wrapper = styled.div`
   .more {
     margin-top: 10px;
   }
+
+  .collapsed-description {
+    transition: max-height 0.5s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .expanded-description {
+    transition: max-height 0.5s ease-in-out;
+    overflow: auto;
+    max-height: 200px;
+  }
+
+  @-prefix-keyframes slide {
+    from {
+      height: 0;
+    }
+    to {
+      height: inherit;
+    }
+  }
 `;
 
 const Episode = ({ episode }) => {
@@ -41,21 +57,22 @@ const Episode = ({ episode }) => {
 
   const [currentEpisodeId, setCurrentEpisodeId] = useState(null);
   const [isExpanded, setExpanded] = useState(false);
-  console.log('handleExpandClick', isExpanded);
-  const { id: episodeId, date, title, description, extendedDescription, source } = episode || {};
+
+  const { id: episodeId, date, title, description, extendedDescription, source, image } = episode || {};
 
   const isCurrentEpisode = id === currentEpisodeId;
 
   const handleExpandClick = () => {
-    setExpanded(!isExpanded);
+    setExpanded(prevValue => !prevValue);
   };
 
+  console.log('isExpanded', isExpanded);
   const toglePlayPause = id => {
     const params = {
       id: episodeId,
       isPlaying: !isPlaying,
       audioSrc: source,
-      imageSrc: img,
+      imageSrc: image,
       title,
     };
 
@@ -66,7 +83,6 @@ const Episode = ({ episode }) => {
     }
 
     if (isPlaying && isCurrentEpisode) {
-      console.log('here 2', isPlaying);
       dispatch(setIsPlaying(!isPlaying));
       return;
     }
@@ -76,6 +92,8 @@ const Episode = ({ episode }) => {
       dispatch(setPlayerInfo(currentParams));
     }
   };
+
+  const descriptionClass = isExpanded ? 'expanded-description' : 'collapsed-description';
 
   return (
     <Wrapper>
@@ -89,16 +107,11 @@ const Episode = ({ episode }) => {
           )}
           <div className="primary-text">{title}</div>
         </div>
-        <div className="description secondary-text">
-          {description}
-          {isExpanded && extendedDescription}
-        </div>
+        <div className="description secondary-text">{description}</div>
 
-        {/* {isExpanded && <div className="description secondary-text">{extendedDescription}</div>} */}
+        <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>
 
-        <div type="button" onClick={handleExpandClick} className="secondary-text-bold pointer more">
-          Expand more
-        </div>
+        <Button title="Expand more" onClick={handleExpandClick} className="secondary-text-bold pointer more" />
       </div>
     </Wrapper>
   );

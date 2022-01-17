@@ -7,9 +7,9 @@ const defaultStyles = {
   borderColor: colors.darkBlue1,
 };
 
-const CustomButton = ({ title, customStyles = {} }) => {
+const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {} }) => {
   return (
-    <Button sx={{ ...defaultStyles, ...customStyles }} size="small" variant="outlined">
+    <Button variant={variant} sx={{ ...defaultStyles, ...customStyles }} size="small" onClick={onClick}>
       {title}
     </Button>
   );

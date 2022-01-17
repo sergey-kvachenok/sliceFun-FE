@@ -1,5 +1,13 @@
+import styled from 'styled-components';
 import CustomTabs from '../../shared/Tabs';
 import Episode from './Episode';
+import VideoEpisode from './VideoEpisode';
+import Button from '../../shared/Button';
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const tabs = [
   {
@@ -34,7 +42,11 @@ const tabs = [
   },
 ];
 
-const Episodes = ({ latestEpisodes }) => {
+const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
+  const handleLoadMoreClick = () => {
+    console.log('Load more');
+  };
+
   return (
     <div className="container-padding">
       <CustomTabs data={tabs} />
@@ -42,6 +54,22 @@ const Episodes = ({ latestEpisodes }) => {
       <div className="primary-text">Latest Episodes</div>
       {latestEpisodes.map(episode => (
         <Episode episode={episode} />
+      ))}
+      <ButtonContainer>
+        <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
+      </ButtonContainer>
+
+      <div className="primary-text">Premium Episodes</div>
+      {premiumEpisodes.map(episode => (
+        <Episode episode={episode} />
+      ))}
+      <ButtonContainer>
+        <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
+      </ButtonContainer>
+
+      <div className="primary-text">Latest Viseo</div>
+      {video.map(episode => (
+        <VideoEpisode episode={episode} />
       ))}
     </div>
   );
