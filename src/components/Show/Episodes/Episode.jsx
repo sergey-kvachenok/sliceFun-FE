@@ -25,6 +25,10 @@ const Wrapper = styled.div`
     align-items: center;
   }
 
+  .play-pause-button {
+    margin-right: 8px;
+  }
+
   .more {
     margin-top: 10px;
   }
@@ -57,7 +61,6 @@ const Episode = ({ episode }) => {
     setExpanded(prevValue => !prevValue);
   };
 
-  console.log('isExpanded', isExpanded);
   const toglePlayPause = id => {
     const params = {
       id: episodeId,
@@ -89,15 +92,17 @@ const Episode = ({ episode }) => {
   return (
     <Wrapper>
       <div className="date secondary-text">{dayjs(new Date(date)).format('MMM D, YYYY')}</div>
+
       <div className="info">
         <div className="header">
           {isCurrentEpisode && isPlaying ? (
-            <PauseCircleOutlineOutlinedIcon className="pointer" onClick={() => toglePlayPause(episodeId)} />
+            <PauseCircleOutlineOutlinedIcon className="pointer play-pause-button" onClick={() => toglePlayPause(episodeId)} />
           ) : (
-            <PlayCircleOutlinedIcon className="pointer" onClick={() => toglePlayPause(episodeId)} />
+            <PlayCircleOutlinedIcon className="pointer play-pause-button" onClick={() => toglePlayPause(episodeId)} />
           )}
           <div className="primary-text">{title}</div>
         </div>
+
         <div className="description secondary-text">{description}</div>
 
         <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>

@@ -6,7 +6,13 @@ export const showsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SHOWS_BACKEND_URL }),
   endpoints: builder => ({
     getShows: builder.query({
-      query: () => ({ url: `shows` }),
+      query: args => {
+        const { search } = args;
+        return {
+          url: `shows`,
+          params: { search },
+        };
+      },
       transformResponse: (response, meta, arg) => {
         console.log('response', response, meta);
         return response;
@@ -27,7 +33,14 @@ export const showsApi = createApi({
       transformResponse: (response, meta, arg) => response,
     }),
     getShowsById: builder.query({
-      query: id => ({ url: `shows/${id}` }),
+      query: args => {
+        const { id, search } = args || {};
+
+        return {
+          url: `shows/${id}`,
+          params: { search },
+        };
+      },
       transformResponse: (response, meta, arg) => response,
     }),
   }),

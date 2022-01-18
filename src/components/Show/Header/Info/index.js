@@ -3,18 +3,6 @@ import Button from '../../../shared/Button';
 import Verified from '../../../shared/Verified';
 
 const Wrapper = styled.div`
-  /* .poster {
-    height: 120px;
-    width: 120px;
-    margin-right: 15px;
-
-    img {
-      height: inherit;
-      width: inherit;
-      object-fit: cover;
-    }
-  } */
-
   .content-container {
     display: flex;
     justify-content: 'space-between';
