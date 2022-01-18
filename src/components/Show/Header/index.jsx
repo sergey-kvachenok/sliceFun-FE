@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../shared/Button';
 import Search from '../../shared/Search';
-import HeaderBackground from '../../shared/HeaderBackground'
+import HeaderBackground from '../../shared/HeaderBackground';
 import Info from './Info';
 import { colors, breakpoints } from '../../../styles/theme';
 
@@ -34,8 +34,8 @@ const Panel = styled.div`
 const Header = React.memo(({ mainImage, title, verified, handleSearchChange }) => {
   return (
     <Wrapper className="container-padding">
-<HeaderBackground backgroundImageSrc={mainImage}/>
- 
+      <HeaderBackground backgroundImageSrc={mainImage} />
+
       <Panel>
         <Search handleSearchChange={handleSearchChange} />
 

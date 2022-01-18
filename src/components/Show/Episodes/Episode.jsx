@@ -96,7 +96,10 @@ const Episode = ({ episode }) => {
       <div className="info">
         <div className="header">
           {isCurrentEpisode && isPlaying ? (
-            <PauseCircleOutlineOutlinedIcon className="pointer play-pause-button" onClick={() => toglePlayPause(episodeId)} />
+            <PauseCircleOutlineOutlinedIcon
+              className="pointer play-pause-button"
+              onClick={() => toglePlayPause(episodeId)}
+            />
           ) : (
             <PlayCircleOutlinedIcon className="pointer play-pause-button" onClick={() => toglePlayPause(episodeId)} />
           )}

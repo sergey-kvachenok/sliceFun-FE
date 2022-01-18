@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import AudioPlayer from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
 import SideBar from './components/SideBar';
-import {routes} from './constants/routes'
+import { routes } from './constants/routes';
 
 function App() {
   const { id } = useSelector(({ player }) => player);
@@ -23,12 +23,10 @@ function App() {
 
           <Grid sx={{ padding: '0' }} item xs={12} sm={8} md={9} ld={10}>
             <Routes>
-            {
-              routes.map(({path, component}) => {
+              {routes.map(({ path, component }) => {
                 const RouteComponent = component;
-                return <Route path={path} element={<RouteComponent />} />
-               })
-            }
+                return <Route path={path} element={<RouteComponent />} />;
+              })}
             </Routes>
           </Grid>
         </BrowserRouter>

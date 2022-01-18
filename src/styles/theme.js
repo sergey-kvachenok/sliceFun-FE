@@ -23,10 +23,10 @@ export const breakpoints = {
 
 export const zIndexes = {
   search: 1,
-}
+};
 
 export const theme = {
   colors,
   breakpoints,
-  zIndexes
+  zIndexes,
 };

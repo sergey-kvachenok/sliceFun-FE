@@ -10,7 +10,7 @@ import Episodes from '../../components/Show/Episodes';
 const debounceDelay = 500;
 
 const Show = () => {
-  const {id} = useParams()
+  const { id } = useParams();
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading } = useGetShowsByIdQuery({

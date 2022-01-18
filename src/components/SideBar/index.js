@@ -15,17 +15,16 @@ const SideBar = () => {
 
   return (
     <List sx={{ borderRight: 1, borderColor: 'grey.200' }}>
-      
-      <StyledLink to='/'>
-      <ListItem>
-        <ListItemIcon>
-          <PodcastsIcon sx={{ fontSize: 40 }} />
-        </ListItemIcon>
+      <StyledLink to="/">
+        <ListItem>
+          <ListItemIcon>
+            <PodcastsIcon sx={{ fontSize: 40 }} />
+          </ListItemIcon>
 
-        <ListItemText>
-          <Typography variant="h4">Slice</Typography>
-        </ListItemText>
-      </ListItem>
+          <ListItemText>
+            <Typography variant="h4">Slice</Typography>
+          </ListItemText>
+        </ListItem>
       </StyledLink>
 
       {sideBarButtons.map(button => (

@@ -20,7 +20,7 @@ const LatestShows = () => {
   return (
     <>
       <Paper elevation={3}>
-        <HeadShow showData={firstShow} mainImage={firstShow.mainImage}/>
+        <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
       </Paper>
 
       <ListWrapper>

@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import Button from '../../shared/Button';
 import Verified from '../../shared/Verified';
 import HeaderBackground from '../../shared/HeaderBackground';
 import { colors } from '../../../styles/theme';
-import {setPlayerInfo, setIsPlaying} from '../../../store/slices/playerSlice'
+import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 
 const Wrapper = styled.div`
   height: 250px;
@@ -32,9 +32,9 @@ const Wrapper = styled.div`
 `;
 
 const HeadShow = ({ showData }) => {
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isPlaying, id} = useSelector(({ player }) => player);
+  const { isPlaying, id } = useSelector(({ player }) => player);
 
   const { id: showId, verified, title, image, mainImage, source } = showData || {};
 
@@ -43,26 +43,26 @@ const HeadShow = ({ showData }) => {
   };
 
   const togglePlayPause = () => {
-    const params = { 
+    const params = {
       id: showId,
-     isPlaying: !isPlaying,
+      isPlaying: !isPlaying,
       audioSrc: source,
-       imageSrc: image,
-        title
-         }
+      imageSrc: image,
+      title,
+    };
 
     if (!id) {
-      dispatch(setPlayerInfo(params))
+      dispatch(setPlayerInfo(params));
     }
 
     if (id) {
-      dispatch(setIsPlaying(!isPlaying))
+      dispatch(setIsPlaying(!isPlaying));
     }
-  }
+  };
 
   return (
     <Wrapper>
-    <HeaderBackground backgroundImageSrc={mainImage}/>
+      <HeaderBackground backgroundImageSrc={mainImage} />
       <div className="info">
         <div className="content-container">
           <div className="header-poster">
@@ -76,9 +76,17 @@ const HeadShow = ({ showData }) => {
 
             <div className="header">
               {isPlaying ? (
-                <PauseCircleOutlineOutlinedIcon fontSize="large" className="pointer play-pause-button" onClick={togglePlayPause} />
+                <PauseCircleOutlineOutlinedIcon
+                  fontSize="large"
+                  className="pointer play-pause-button"
+                  onClick={togglePlayPause}
+                />
               ) : (
-                <PlayCircleOutlinedIcon fontSize="large" className="pointer play-pause-button" onClick={togglePlayPause} />
+                <PlayCircleOutlinedIcon
+                  fontSize="large"
+                  className="pointer play-pause-button"
+                  onClick={togglePlayPause}
+                />
               )}
 
               <Button variant="outlined" title="Go to Show" customStyles={{ ml: 2 }} onClick={redirectToShow} />
