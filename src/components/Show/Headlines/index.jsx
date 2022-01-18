@@ -1,14 +1,10 @@
-import styled from 'styled-components';
 import Headline from './Headline';
-
-const Wrapper = styled.div`
-  margin-top: 20px;
-`;
+import { ListWrapper } from '../../../styles/containers';
 
 const Headlines = ({ headlines = [] }) => {
   const content = headlines.map(headline => <Headline headline={headline} />);
 
-  return <Wrapper className="container-padding">{content}</Wrapper>;
+  return <ListWrapper className="margin-top">{content}</ListWrapper>;
 };
 
 export default Headlines;

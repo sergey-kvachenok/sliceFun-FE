@@ -55,6 +55,10 @@ margin: 0 auto;
       object-fit: cover;
     }
   }
+
+  .margin-top {
+    margin-top: 20px;
+  }
 `;
 
 export default GlobalStyle;

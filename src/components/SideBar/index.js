@@ -40,27 +40,23 @@ const SideBar = () => {
           <PodcastsIcon sx={{ fontSize: 40 }} />
         </ListItemIcon>
         <ListItemText>
-          <Typography variant='h4'>
-            Slice
-          </Typography>
+          <Typography variant="h4">Slice</Typography>
         </ListItemText>
       </ListItem>
-      {sideBarButtons.map((button) => (
+      {sideBarButtons.map(button => (
         <Link to={button.link} key={button.text}>
           <ListItem disabled={button.link === pathname} button>
-            <ListItemIcon>
-              {button.icon}
-            </ListItemIcon>
+            <ListItemIcon>{button.icon}</ListItemIcon>
             <ListItemText primary={button.text} />
           </ListItem>
         </Link>
       ))}
-      <Link to='/account'>
+      <Link to="/account">
         <ListItem button sx={{ mt: 25 }}>
           <ListItemIcon>
             <AccountCircleIcon />
           </ListItemIcon>
-          <ListItemText primary='Your Account' />
+          <ListItemText primary="Your Account" />
         </ListItem>
       </Link>
     </List>

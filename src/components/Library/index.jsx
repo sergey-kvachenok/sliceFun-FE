@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import Spinner from '../shared/Spinner';
 import Table from '../shared/Table';
 import Tabs from '../shared/Tabs';
+import { ListWrapper } from '../../styles/containers';
 import { useGetLibraryQuery } from '../../store/queries/shows';
 
 const ImageWrapper = styled.div`
@@ -90,10 +91,10 @@ const Library = () => {
   const currentTabs = tabs.map(tab => ({ ...tab, clickHandler: () => handleTabChange(tab.slug) }));
 
   return (
-    <div>
+    <ListWrapper>
       <Tabs customStyles={{ marginBottom: '20px' }} tabs={currentTabs} />
       <Table columns={columns} rows={rows} />
-    </div>
+    </ListWrapper>
   );
 };
 

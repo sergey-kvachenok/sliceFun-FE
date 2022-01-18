@@ -3,6 +3,7 @@ import CustomTabs from '../../shared/Tabs';
 import Episode from './Episode';
 import VideoEpisode from './VideoEpisode';
 import Button from '../../shared/Button';
+import { ListWrapper } from '../../../styles/containers';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -51,26 +52,32 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
     <div className="container-padding">
       <CustomTabs tabs={tabs} />
 
-      <div className="primary-text">Latest Episodes</div>
-      {latestEpisodes.map(episode => (
-        <Episode episode={episode} />
-      ))}
-      <ButtonContainer>
-        <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
-      </ButtonContainer>
+      <ListWrapper>
+        <div className="primary-text">Latest Episodes</div>
+        {latestEpisodes.map(episode => (
+          <Episode episode={episode} />
+        ))}
+        <ButtonContainer>
+          <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
+        </ButtonContainer>
+      </ListWrapper>
 
-      <div className="primary-text">Premium Episodes</div>
-      {premiumEpisodes.map(episode => (
-        <Episode episode={episode} />
-      ))}
-      <ButtonContainer>
-        <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
-      </ButtonContainer>
+      <ListWrapper>
+        <div className="primary-text">Premium Episodes</div>
+        {premiumEpisodes.map(episode => (
+          <Episode episode={episode} />
+        ))}
+        <ButtonContainer>
+          <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
+        </ButtonContainer>
+      </ListWrapper>
 
-      <div className="primary-text">Latest Video</div>
-      {video.map(episode => (
-        <VideoEpisode episode={episode} />
-      ))}
+      <ListWrapper>
+        <div className="primary-text">Latest Video</div>
+        {video.map(episode => (
+          <VideoEpisode episode={episode} />
+        ))}
+      </ListWrapper>
     </div>
   );
 };

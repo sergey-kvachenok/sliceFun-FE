@@ -57,7 +57,6 @@ const Episode = ({ episode }) => {
     setExpanded(prevValue => !prevValue);
   };
 
-  console.log('isExpanded', isExpanded);
   const toglePlayPause = id => {
     const params = {
       id: episodeId,
