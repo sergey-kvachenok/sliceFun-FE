@@ -59,6 +59,18 @@ margin: 0 auto;
   .margin-top {
     margin-top: 20px;
   }
+
+  .play-pause-button {
+    &:active {
+      fill: ${colors.pink}
+    }
+
+      @media (hover: hover) {
+      &:hover {
+        color: ${colors.pink};
+      }
+    }
+  }
 `;
 
 export default GlobalStyle;

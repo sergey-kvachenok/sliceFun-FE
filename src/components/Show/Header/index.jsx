@@ -1,11 +1,12 @@
+import React from 'react';
 import styled from 'styled-components';
 import Button from '../../shared/Button';
 import Search from '../../shared/Search';
+import HeaderBackground from '../../shared/HeaderBackground'
 import Info from './Info';
 import { colors, breakpoints } from '../../../styles/theme';
 
 const Wrapper = styled.div`
-  background-image: url(${({ imageSrc }) => imageSrc});
   height: 250px;
   position: relative;
   background-color: ${colors.darkBlue1};
@@ -30,9 +31,11 @@ const Panel = styled.div`
   }
 `;
 
-const Header = ({ mainImage, title, verified, handleSearchChange }) => {
+const Header = React.memo(({ mainImage, title, verified, handleSearchChange }) => {
   return (
-    <Wrapper className="container-padding" imageSrc={mainImage}>
+    <Wrapper className="container-padding">
+<HeaderBackground backgroundImageSrc={mainImage}/>
+ 
       <Panel>
         <Search handleSearchChange={handleSearchChange} />
 
@@ -45,6 +48,6 @@ const Header = ({ mainImage, title, verified, handleSearchChange }) => {
       <Info imageSrc={mainImage} title={title} verified={verified} />
     </Wrapper>
   );
-};
+});
 
 export default Header;

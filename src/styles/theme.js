@@ -21,7 +21,12 @@ export const breakpoints = {
   lg: '1200px',
 };
 
+export const zIndexes = {
+  search: 1,
+}
+
 export const theme = {
   colors,
   breakpoints,
+  zIndexes
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../../styles/theme';
+import { colors, zIndexes } from '../../../styles/theme';
 
 const StyledInput = styled.input.attrs({ placeholder: 'Search' })`
   cursor: pointer;
@@ -8,6 +8,7 @@ const StyledInput = styled.input.attrs({ placeholder: 'Search' })`
   font-size: 12px;
   border: 1px solid ${colors.pink};
   outline: none;
+  z-index: ${zIndexes.search};
 
   &:focus,
   &:active {

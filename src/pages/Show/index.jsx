@@ -1,14 +1,16 @@
 import { useState, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { useGetShowsByIdQuery } from '../../store/queries/shows';
-import Spinner from '../shared/Spinner';
-import Header from './Header';
-import Headlines from './Headlines';
-import Episodes from './Episodes';
+import Spinner from '../../components/shared/Spinner';
+import Header from '../../components/Show/Header';
+import Headlines from '../../components/Show/Headlines';
+import Episodes from '../../components/Show/Episodes';
 
 const debounceDelay = 500;
 
-const Show = ({ id = 3 }) => {
+const Show = () => {
+  const {id} = useParams()
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading } = useGetShowsByIdQuery({

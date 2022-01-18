@@ -4,7 +4,7 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
-import { setCurrentTime, setIsPlaying, setDuration } from '../store/slices/playerSlice';
+import { setCurrentTime, setIsPlaying, setDuration } from '../../store/slices/playerSlice';
 import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper } from './AudioPlayer.styles';
 
 const shiftTime = 15;
@@ -60,26 +60,12 @@ const AudioPlayer = ({ audio, image }) => {
 
   useEffect(() => {
     handlePlayPause();
-    // if (isPlaying) {
-    //   audioPlayer.current.play();
-    //   animationRef.current = requestAnimationFrame(whilePlaying);
-    // } else {
-    //   audioPlayer.current.pause();
-    //   cancelAnimationFrame(animationRef.current);
-    // }
   }, [handlePlayPause]);
 
   const togglePlayPause = () => {
     // const prevValue = isPlaying;
     dispatch(setIsPlaying(!isPlaying));
     handlePlayPause(isPlaying);
-    // if (!prevValue) {
-    //   audioPlayer.current.play();
-    //   animationRef.current = requestAnimationFrame(whilePlaying);
-    // } else {
-    //   audioPlayer.current.pause();
-    //   cancelAnimationFrame(animationRef.current);
-    // }
   };
 
   const changeRange = () => {
@@ -149,4 +135,4 @@ const AudioPlayer = ({ audio, image }) => {
   );
 };
 
-export { AudioPlayer };
+export default AudioPlayer;

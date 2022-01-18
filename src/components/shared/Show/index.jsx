@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Verified from '../../shared/Verified';
-
-const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-`;
+import { StyledLink } from '../../../styles/containers';
 
 const Show = ({ show }) => {
   const { title, image, id, verified } = show || {};

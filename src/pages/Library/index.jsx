@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import Spinner from '../shared/Spinner';
-import Table from '../shared/Table';
-import Tabs from '../shared/Tabs';
+import Spinner from '../../components/shared/Spinner';
+import Table from '../../components/shared/Table';
+import Tabs from '../../components/shared/Tabs';
 import { ListWrapper } from '../../styles/containers';
 import { useGetLibraryQuery } from '../../store/queries/shows';
 

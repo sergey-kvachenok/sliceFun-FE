@@ -1,9 +1,9 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import HeadShow from './HeadShow';
-import Show from '../shared/Show';
-import Spinner from '../shared/Spinner';
+import HeadShow from '../../components/LatestShows/HeadShow';
+import Show from '../../components/shared/Show';
+import Spinner from '../../components/shared/Spinner';
 import { ListWrapper } from '../../styles/containers';
 import { useGetPopularShowsQuery } from '../../store/queries/shows';
 
@@ -20,7 +20,7 @@ const LatestShows = () => {
   return (
     <>
       <Paper elevation={3}>
-        <HeadShow showData={firstShow} />
+        <HeadShow showData={firstShow} mainImage={firstShow.mainImage}/>
       </Paper>
 
       <ListWrapper>
