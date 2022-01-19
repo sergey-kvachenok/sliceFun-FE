@@ -6,7 +6,8 @@ const defaultStyles = {
   color: colors.darkBlue1,
   textTransform: 'capitalize',
   transition: '0.6s',
-
+  border: 2,
+  
   '&:hover': {
     color: colors.pink,
     border: 2,
