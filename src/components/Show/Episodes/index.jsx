@@ -55,7 +55,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       <ListWrapper>
         <div className="primary-text">Latest Episodes</div>
         {latestEpisodes.map(episode => (
-          <Episode episode={episode} key={episode.title} />
+          <Episode episode={episode} key={episode.id} />
         ))}
         <ButtonContainer>
           <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
@@ -65,7 +65,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       <ListWrapper>
         <div className="primary-text">Premium Episodes</div>
         {premiumEpisodes.map(episode => (
-          <Episode episode={episode} key={episode.title} />
+          <Episode episode={episode} key={episode.id} />
         ))}
         <ButtonContainer>
           <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
@@ -75,7 +75,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       <ListWrapper>
         <div className="primary-text">Latest Video</div>
         {video.map(episode => (
-          <VideoEpisode episode={episode} key={episode.title} />
+          <VideoEpisode episode={episode} key={episode.id} />
         ))}
       </ListWrapper>
     </div>

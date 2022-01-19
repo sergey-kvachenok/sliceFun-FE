@@ -21,8 +21,8 @@ const Info = ({ imageSrc, title, verified }) => {
           <Verified verified={verified} />
 
           <div className="primary-text">{title}</div>
-          <Button variant="outlined" title="Follow" customStyles={{ mr: 2 }} />
-          <Button variant="outlined" title="Some text is here" customStyles={{ mr: 2 }} />
+          <Button variant="outlined" title="Follow" customStyles={{ mr: 2, mb: 2 }} />
+          <Button variant="outlined" title="Some text is here" customStyles={{ mr: 2, mb: 2 }} />
         </div>
       </div>
     </Wrapper>

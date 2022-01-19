@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import AudioPlayer from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
-import SideBar from './components/SideBar';
+import SideBarContainer from './components/SideBar/SideBarContainer';
+import SideBarBurgerButton from './components/shared/SideBarBurgerButton';
 import { routes } from './constants/routes';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
       <Grid container direction="row" justifyContent="center" sx={{ height: '95vh', overflow: containerOverflow }}>
         <BrowserRouter>
           <Grid item xs={12} sm={4} md={3} lg={2}>
-            <SideBar />
+            <SideBarContainer />
+            <SideBarBurgerButton />
           </Grid>
 
           <Grid sx={{ padding: '0' }} item xs={12} sm={8} md={9} ld={10}>

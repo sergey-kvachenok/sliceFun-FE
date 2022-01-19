@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import HeadShow from '../../components/LatestShows/HeadShow';
 import Show from '../../components/shared/Show';
@@ -19,10 +18,7 @@ const LatestShows = () => {
 
   return (
     <>
-      <Paper elevation={3}>
-        <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
-      </Paper>
-
+      <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
       <ListWrapper>
         <div className="primary-text">Popular Shows on Slice</div>
 

@@ -13,7 +13,6 @@ import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 const Wrapper = styled.div`
   height: 250px;
   position: relative;
-  background-color: ${colors.darkBlue1};
   background-position: center;
   background-size: auto;
 

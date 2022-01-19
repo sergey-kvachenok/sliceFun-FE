@@ -23,14 +23,11 @@ const Wrapper = styled.div`
   .header {
     display: flex;
     align-items: center;
+    margin-bottom: 6px;
   }
 
   .play-pause-button {
     margin-right: 8px;
-  }
-
-  .more {
-    margin-top: 10px;
   }
 
   .collapsed-description {
@@ -110,7 +107,7 @@ const Episode = ({ episode }) => {
 
         <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>
 
-        <Button title="Expand more" onClick={handleExpandClick} className="secondary-text-bold pointer more" />
+        <Button title="Expand more" onClick={handleExpandClick} customStyles={{ mt: 1 }} />
       </div>
     </Wrapper>
   );
