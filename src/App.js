@@ -28,7 +28,7 @@ const App = () => {
      <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      {!isOnline && <Error 
+      {!isOnline && <Error
        customClassName="fixed"
        message="You are currently offline" />}
 
