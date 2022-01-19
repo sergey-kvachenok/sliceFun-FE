@@ -3,6 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // Define a service using a base URL and expected endpoints
 export const showsApi = createApi({
   reducerPath: 'shows',
+  refetchOnReconnect: true,
+  tagTypes: ['Shows'],
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SHOWS_BACKEND_URL }),
   endpoints: builder => ({
     getShows: builder.query({
@@ -13,8 +15,8 @@ export const showsApi = createApi({
           params: { search },
         };
       },
+      providedTags: ['Shows'], // helps to refetch data if shows were changed by mutation (currently not useful here)
       transformResponse: (response, meta, arg) => {
-        console.log('response', response, meta);
         return response;
       },
     }),
@@ -30,7 +32,9 @@ export const showsApi = createApi({
           params: { category },
         };
       },
-      transformResponse: (response, meta, arg) => response,
+      transformResponse: (response, meta, arg) => {
+        return response
+        }
     }),
     getShowsById: builder.query({
       query: args => {

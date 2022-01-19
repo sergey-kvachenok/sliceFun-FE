@@ -162,12 +162,3 @@ self.addEventListener('push', async event => {
 
   await self.registration.showNotification(data.title, options);
 });
-
-// For handle notification actions
-// self.addEventListener('notificationclose', async event => {
-//   console.log('Notification was close');
-// });
-
-// self.addEventListener('pushsubscriptionchange', async event => {
-//   console.log('Push subscription change', event);
-// });

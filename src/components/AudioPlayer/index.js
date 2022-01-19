@@ -5,7 +5,7 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import { setCurrentTime, setIsPlaying, setDuration } from '../../store/slices/playerSlice';
-import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper } from './AudioPlayer.styles';
+import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper, PlayerContent } from './AudioPlayer.styles';
 
 const shiftTime = 15;
 
@@ -92,6 +92,7 @@ const AudioPlayer = ({ audio, image }) => {
 
   return (
     <Wrapper>
+    <PlayerContent>
       <AudioInfo>
         <div className="poster">
           <img src={imageSrc} height="50" width="50" alt="Audio poster" />
@@ -131,6 +132,7 @@ const AudioPlayer = ({ audio, image }) => {
         {/* duration */}
         <div className="duration xs-hidden">{audioDuration ? audioDuration : ''}</div>
       </AudioPlayerWrapper>
+    </PlayerContent>
     </Wrapper>
   );
 };

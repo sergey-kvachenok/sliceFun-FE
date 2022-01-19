@@ -23,6 +23,7 @@ export const breakpoints = {
 
 export const zIndexes = {
   search: 1,
+  offlineBanner: 2,
 };
 
 export const theme = {
