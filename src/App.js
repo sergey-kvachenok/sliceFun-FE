@@ -25,7 +25,7 @@ function App() {
             <Routes>
               {routes.map(({ path, component }) => {
                 const RouteComponent = component;
-                return <Route path={path} element={<RouteComponent />} />;
+                return <Route path={path} element={<RouteComponent />} key={path} />;
               })}
             </Routes>
           </Grid>

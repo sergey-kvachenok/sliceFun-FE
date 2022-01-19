@@ -2,7 +2,7 @@ import Headline from './Headline';
 import { ListWrapper } from '../../../styles/containers';
 
 const Headlines = ({ headlines = [] }) => {
-  const content = headlines.map(headline => <Headline headline={headline} />);
+  const content = headlines.map(headline => <Headline headline={headline} key={headline.title} />);
 
   return <ListWrapper className="margin-top">{content}</ListWrapper>;
 };
