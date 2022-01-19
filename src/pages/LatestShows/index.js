@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import HeadShow from '../../components/LatestShows/HeadShow';
 import Show from '../../components/shared/Show';
@@ -19,17 +18,14 @@ const LatestShows = () => {
 
   return (
     <>
-      <Paper elevation={3}>
-        <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
-      </Paper>
-
+      <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
       <ListWrapper>
         <div className="primary-text">Popular Shows on Slice</div>
 
         <Grid container spacing={4}>
           {transformedData.map(show => (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Show key={show.id} show={show} />
+            <Grid item xs={12} sm={6} md={4} lg={3} key={show.id}>
+              <Show show={show} />
             </Grid>
           ))}
         </Grid>

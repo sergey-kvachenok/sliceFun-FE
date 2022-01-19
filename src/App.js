@@ -6,9 +6,10 @@ import { createTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import AudioPlayer from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
-import SideBar from './components/SideBar';
 import Error from './components/shared/Error'
 import Spinner from './components/shared/Spinner';
+import SideBarContainer from './components/SideBar/SideBarContainer';
+import SideBarBurgerButton from './components/shared/SideBarBurgerButton';
 import { routes } from './constants/routes';
 import { configureSubscription } from './utils/notifications';
 import useNetwork from './hooks/useNetwork'
@@ -28,7 +29,7 @@ const App = () => {
      <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      {!isOnline && <Error 
+      {!isOnline && <Error
        customClassName="fixed"
        message="You are currently offline" />}
 
@@ -36,7 +37,8 @@ const App = () => {
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
           <Grid item xs={12} sm={4} md={3} lg={2}>
-            <SideBar />
+            <SideBarContainer />
+            <SideBarBurgerButton />
           </Grid>
 
           <Grid sx={{ padding: '0' }} item xs={12} sm={8} md={9} ld={10}>

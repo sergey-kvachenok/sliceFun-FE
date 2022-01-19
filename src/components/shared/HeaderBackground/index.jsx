@@ -9,6 +9,7 @@ const StyledImage = styled.img`
   height: 100%;
   object-fit: cover;
   width: 100%;
+  filter: blur(2px);
 `;
 
 const HeaderBackground = ({ backgroundImageSrc }) => {

@@ -10,6 +10,18 @@ const a11yProps = index => {
   };
 };
 
+const defaultStyles = {
+  '& .MuiTabs-indicator': {
+    display: 'none',
+  },
+  '& .Mui-selected': {
+    color: `${colors.pink} !important`,
+    backgroundColor: `${colors.white}`,
+    borderRadius: 2,
+    border: `2px solid ${colors.pink}`,
+  },
+};
+
 const CustomTabs = ({ tabs, customStyles = {} }) => {
   const [value, setValue] = useState(0);
 
@@ -21,11 +33,11 @@ const CustomTabs = ({ tabs, customStyles = {} }) => {
   };
 
   return (
-    <Tabs sx={{ ...customStyles }} value={value} onChange={handleChange} aria-label="Menu tabs">
+    <Tabs sx={{ ...defaultStyles, ...customStyles }} value={value} onChange={handleChange} aria-label="Menu tabs">
       {tabs.map(({ label }, index) => (
         <Tab
           key={label}
-          sx={{ textTransform: 'capitalize', color: colors.darkBlue1 }}
+          sx={{ textTransform: 'capitalize', color: colors.darkBlue1, border: '2px solid white' }}
           label={label}
           {...a11yProps(index)}
         />
