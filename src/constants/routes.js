@@ -1,7 +1,9 @@
-import Library from '../pages/Library';
-import LatestShows from '../pages/LatestShows';
-import Shows from '../pages/Shows';
-import Show from '../pages/Show';
+import { lazy } from 'react';
+
+const Library = lazy(() => import('../pages/Library'));
+const LatestShows= lazy(() => import('../pages/LatestShows'));
+const Shows= lazy(() => import('../pages/Shows'));
+const Show= lazy(() => import('../pages/Show'));
 
 export const routes = [
   {

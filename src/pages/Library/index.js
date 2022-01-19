@@ -77,7 +77,9 @@ const getRows = (data = []) => {
 
 const Library = () => {
   const [activeTab, setActiveTab] = useState('latestUnplayed');
-  const { data, isLoading } = useGetLibraryQuery({ category: activeTab });
+  const { data, isLoading, error } = useGetLibraryQuery({ category: activeTab }, {refetchOnReconnect: true});
+
+  console.log('error', error)
 
   if (isLoading) {
     return <Spinner />;

@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 `;
 
 const Headline = ({ headline }) => {
-  const { image, title, description } = headline;
+  const { image, title, description } = headline || {};
 
   const handleShareClick = () => {
     console.log('Shared');

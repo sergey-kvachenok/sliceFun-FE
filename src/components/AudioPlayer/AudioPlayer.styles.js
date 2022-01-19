@@ -2,21 +2,27 @@ import styled from 'styled-components';
 import { colors } from '../../styles/theme';
 
 export const Wrapper = styled.div`
+ position: fixed;
+ background: ${colors.opacityGray};
+     width: 100%;
+    bottom: 0;
+    padding: 5px 20px;
+
+     @media (hover: hover) {
+    &:hover {
+      background-color: ${colors.white};
+    }
+  }
+`
+
+export const PlayerContent = styled.div`
   max-width: 700px;
   border-radius: 5px;
-  padding: 0 20px;
   box-sizing: border-box;
+  margin: auto;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 5px;
-
-  @media (hover: hover) {
-    &:hover {
-      background-color: ${() => colors.opacityGray};
-    }
-  }
 `;
 
 export const AudioInfo = styled.div`

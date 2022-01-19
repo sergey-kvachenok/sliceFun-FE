@@ -1,6 +1,7 @@
 {
-  "name": "fe",
+  "name": "slice-fun",
   "version": "0.1.0",
+  "description": "Podcasts & Music app (project preparation task)",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -37,10 +38,12 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
+    "serve": "react-scripts build  && serve -s build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +67,7 @@
     "styled-components": "^5"
   },
   "devDependencies": {
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "serve": "^13.0.2"
   }
 }

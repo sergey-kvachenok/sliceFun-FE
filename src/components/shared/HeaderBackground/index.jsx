@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DefaultImage from '../../../assets/images/defaultHeader.png'
 
 const StyledImage = styled.img`
   position: absolute;
@@ -11,7 +12,7 @@ const StyledImage = styled.img`
 `;
 
 const HeaderBackground = ({ backgroundImageSrc }) => {
-  return <StyledImage src={backgroundImageSrc} alt="Show background" />;
+  return <StyledImage src={backgroundImageSrc || DefaultImage} alt="Show background" />;
 };
 
 export default HeaderBackground;

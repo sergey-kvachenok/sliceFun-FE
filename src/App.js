@@ -1,22 +1,40 @@
-import React from 'react';
+import { useEffect, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from '@mui/styles';
+import { createTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import AudioPlayer from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
 import SideBar from './components/SideBar';
+import Error from './components/shared/Error'
+import Spinner from './components/shared/Spinner';
 import { routes } from './constants/routes';
+import { configureSubscription } from './utils/notifications';
+import useNetwork from './hooks/useNetwork'
 
-function App() {
+const theme = createTheme();
+
+const App = () => {
   const { id } = useSelector(({ player }) => player);
-  const containerOverflow = !!id ? 'scroll' : 'none';
+  const isOnline = useNetwork();
+
+  // subscribes to push notifications from server
+  useEffect(() => {
+    configureSubscription();
+  }, []);
 
   return (
-    <>
+     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <Grid container direction="row" justifyContent="center" sx={{ height: '95vh', overflow: containerOverflow }}>
+      {!isOnline && <Error 
+       customClassName="fixed"
+       message="You are currently offline" />}
+
+      <Grid container direction="row" justifyContent="center">
         <BrowserRouter>
+          <Suspense fallback={<Spinner />}>
           <Grid item xs={12} sm={4} md={3} lg={2}>
             <SideBar />
           </Grid>
@@ -25,15 +43,16 @@ function App() {
             <Routes>
               {routes.map(({ path, component }) => {
                 const RouteComponent = component;
-                return <Route path={path} element={<RouteComponent />} />;
+                return <Route key={path} path={path} element={<RouteComponent />} />;
               })}
             </Routes>
           </Grid>
+          </Suspense>
         </BrowserRouter>
 
         {id && <AudioPlayer />}
       </Grid>
-    </>
+    </ThemeProvider>
   );
 }
 

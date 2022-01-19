@@ -33,7 +33,7 @@ const Show = () => {
     getDebouncedSearchResult(inputValue);
   };
 
-  const { verified, mainImage, title, headlines, latest, premium, video } = data;
+  const { verified, mainImage, title, headlines, latest, premium, video } = data || {};
 
   return (
     <div>
