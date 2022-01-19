@@ -11,7 +11,21 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
+
+const cashedUrlKeys = {
+  shows: 'https://mb6zd106gh.execute-api.eu-west-1.amazonaws.com/dev/',
+  s3Images: 'slice-fun-podcasts',
+};
+
+const optionsTmpl = {
+  icon: '/icon-96x96.png',
+  image: '/icon-192x192.png',
+  dir: 'rtl',
+  lang: 'en-US',
+  badge: '/icon-96x96.png',
+  vibrate: [200, 100, 200],
+};
 
 clientsClaim();
 
@@ -25,6 +39,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
+
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }) => {
@@ -61,6 +76,38 @@ registerRoute(
   }),
 );
 
+// Caching dynamic-data
+registerRoute(
+  ({ url, request, event }) => {
+    const isMatch = url.href.includes(cashedUrlKeys.shows);
+    return isMatch;
+  },
+  new NetworkFirst({
+    cacheName: 'shows-data',
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 10 }),
+    ],
+  }),
+);
+
+// Caching S3 images used for shows/episodes
+registerRoute(
+  ({ url, request, event }) => {
+    const isMatch = url.href.includes(cashedUrlKeys.s3Images);
+    return isMatch;
+  },
+  new NetworkFirst({
+    cacheName: 'dynamic-s3-images',
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 10 }),
+    ],
+  }),
+);
+
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener('message', event => {
@@ -69,4 +116,58 @@ self.addEventListener('message', event => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// Setting web-push notifications
+self.addEventListener('notificationclick', async event => {
+  const { notification, action } = event;
+  const { data } = notification || {};
+
+  try {
+    if (action === 'confirm') {
+      notification.close();
+    } else {
+      const clients = await self.clients.matchAll({ includeUncontrolled: true });
+      const openClient = clients.find(client => client.visibilityState === 'visible');
+
+      let url = self.location.origin;
+
+      if (data?.openUrl) {
+        url += data?.openUrl;
+      }
+
+      if (openClient) {
+        openClient.navigate(url);
+        openClient.focus();
+      } else {
+        const windowClient = self.clients.openWindow(url);
+        await windowClient.focus();
+      }
+      notification.close();
+    }
+  } catch (err) {
+    console.log('err', err);
+  }
+});
+
+self.addEventListener('push', async event => {
+  console.log('event', event);
+
+  if (!event.data) return;
+
+  const data = JSON.parse(event.data.text());
+
+  const options = {
+    body: data.content,
+    ...optionsTmpl,
+  };
+
+  await self.registration.showNotification(data.title, options);
+});
+
+// For handle notification actions
+// self.addEventListener('notificationclose', async event => {
+//   console.log('Notification was close');
+// });
+
+// self.addEventListener('pushsubscriptionchange', async event => {
+//   console.log('Push subscription change', event);
+// });

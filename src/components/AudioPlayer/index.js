@@ -33,27 +33,27 @@ const AudioPlayer = ({ audio, image }) => {
   const animationRef = useRef(); // reference the animation
 
   useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration);
+    const seconds = Math.floor(audioPlayer.current?.duration);
     dispatch(setDuration(seconds));
     progressBar.current.max = seconds;
   }, [dispatch, audioPlayer.current?.duration]);
 
   const changePlayerCurrentTime = useCallback(() => {
-    dispatch(setCurrentTime(Number(progressBar.current.value)));
+    dispatch(setCurrentTime(Number(progressBar.current?.value)));
   }, [dispatch]);
 
   const whilePlaying = useCallback(() => {
-    progressBar.current.value = audioPlayer.current.currentTime;
+    progressBar.current.value = audioPlayer.current?.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
   }, [changePlayerCurrentTime]);
 
   const handlePlayPause = useCallback(() => {
     if (isPlaying) {
-      audioPlayer.current.play();
+      audioPlayer.current?.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
-      audioPlayer.current.pause();
+      audioPlayer.current?.pause();
       cancelAnimationFrame(animationRef.current);
     }
   }, [whilePlaying, isPlaying, id]); // id for changing episodes
@@ -69,17 +69,17 @@ const AudioPlayer = ({ audio, image }) => {
   };
 
   const changeRange = () => {
-    audioPlayer.current.currentTime = progressBar.current.value;
+    audioPlayer.current.currentTime = progressBar.current?.value;
     changePlayerCurrentTime();
   };
 
   const backTimeshift = () => {
-    progressBar.current.value = Number(progressBar.current.value) - shiftTime;
+    progressBar.current.value = Number(progressBar.current?.value) - shiftTime;
     changeRange();
   };
 
   const forwardTimeshift = () => {
-    progressBar.current.value = Number(progressBar.current.value) + shiftTime;
+    progressBar.current.value = Number(progressBar.current?.value) + shiftTime;
     changeRange();
   };
 

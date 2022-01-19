@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
@@ -6,10 +6,16 @@ import AudioPlayer from '../src/components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
 import SideBar from './components/SideBar';
 import { routes } from './constants/routes';
+import { configureSubscription } from './utils/notifications';
 
 function App() {
   const { id } = useSelector(({ player }) => player);
   const containerOverflow = !!id ? 'scroll' : 'none';
+
+  // subscribes to push notifications from server
+  useEffect(() => {
+    configureSubscription();
+  }, []);
 
   return (
     <>

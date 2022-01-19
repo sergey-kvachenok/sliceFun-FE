@@ -43,7 +43,7 @@ const tabs = [
   },
 ];
 
-const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
+const Episodes = ({ latestEpisodes = [], premiumEpisodes = [], video = [] }) => {
   const handleLoadMoreClick = () => {
     console.log('Load more');
   };
@@ -54,8 +54,8 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
 
       <ListWrapper>
         <div className="primary-text">Latest Episodes</div>
-        {latestEpisodes.map(episode => (
-          <Episode episode={episode} />
+        {latestEpisodes?.map(episode => (
+          <Episode key={episode.id} episode={episode} />
         ))}
         <ButtonContainer>
           <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
@@ -64,8 +64,8 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
 
       <ListWrapper>
         <div className="primary-text">Premium Episodes</div>
-        {premiumEpisodes.map(episode => (
-          <Episode episode={episode} />
+        {premiumEpisodes?.map(episode => (
+          <Episode key={episode.id} episode={episode} />
         ))}
         <ButtonContainer>
           <Button variant="outlined" title="Load More" onClick={handleLoadMoreClick} />
@@ -74,8 +74,8 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
 
       <ListWrapper>
         <div className="primary-text">Latest Video</div>
-        {video.map(episode => (
-          <VideoEpisode episode={episode} />
+        {video?.map(episode => (
+          <VideoEpisode key={episode.id} episode={episode} />
         ))}
       </ListWrapper>
     </div>
