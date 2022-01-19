@@ -9,6 +9,7 @@ export const ListWrapper = styled.div`
 export const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
+  width: 100%;
 
   &:active,
   &:focus {
