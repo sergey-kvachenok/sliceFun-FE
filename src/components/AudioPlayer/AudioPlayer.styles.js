@@ -4,13 +4,14 @@ import { colors } from '../../styles/theme';
 export const Wrapper = styled.div`
   max-width: 700px;
   border-radius: 5px;
-  padding: 0 20px;
+  padding: 6px 20px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   justify-content: space-between;
   position: fixed;
   bottom: 5px;
+  margin-bottom: 10px;
 
   @media (hover: hover) {
     &:hover {
@@ -84,6 +85,9 @@ export const AudioPlayerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    svg {
+      fill: ${() => colors.white};
+    }
   }
 
   .currentTime,
@@ -104,6 +108,8 @@ export const ProgressBar = styled.input.attrs({ type: 'range', defaultValue: 0 }
   position: relative;
   height: 11px;
   outline: none;
+  margin-right: 6px;
+  margin-left: 6px;
 
   &::before {
     content: '';
@@ -111,7 +117,7 @@ export const ProgressBar = styled.input.attrs({ type: 'range', defaultValue: 0 }
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     width: ${props => `${props.beforeWidth}%` || 0};
-    background-color: ${() => colors.coralRed};
+    background-color: ${() => colors.opacityGray};
     position: absolute;
     top: 0;
     left: 0;
@@ -125,7 +131,7 @@ export const ProgressBar = styled.input.attrs({ type: 'range', defaultValue: 0 }
     width: 15px;
     border-radius: 50%;
     border: none;
-    background-color: ${() => colors.darkBlue};
+    background-color: ${() => colors.pink};
     cursor: pointer;
     position: relative;
     z-index: 3;
@@ -134,6 +140,6 @@ export const ProgressBar = styled.input.attrs({ type: 'range', defaultValue: 0 }
 
   &:active::-webkit-slider-thumb {
     transform: scale(1.2);
-    background: ${() => colors.oceanGreen};
+    background: ${() => colors.pink};
   }
 `;
