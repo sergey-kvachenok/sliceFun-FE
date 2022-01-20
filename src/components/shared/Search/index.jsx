@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { colors, zIndexes } from '../../../styles/theme';
+import { colors, zIndexes, breakpoints } from '../../../styles/theme';
 
-const StyledInput = styled.input.attrs({ placeholder: 'Search' })`
+const StyledInput = styled.input`
   cursor: pointer;
   padding: 4px 5px;
   border-radius: 5px;
@@ -24,11 +25,13 @@ const StyledInput = styled.input.attrs({ placeholder: 'Search' })`
 `;
 
 const Search = ({ handleSearchChange }) => {
+  const { t } = useTranslation(['shows']);
+
   const handleChange = event => {
     handleSearchChange(event.target.value);
   };
 
-  return <StyledInput onChange={handleChange} />;
+  return <StyledInput placeholder={t('search')} onChange={handleChange} />;
 };
 
 export default Search;

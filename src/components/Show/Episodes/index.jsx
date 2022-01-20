@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CustomTabs from '../../shared/Tabs';
 import Episode from './Episode';
@@ -44,6 +45,7 @@ const tabs = [
 ];
 
 const Episodes = ({ latestEpisodes = [], premiumEpisodes = [], video = [] }) => {
+  const { t } = useTranslation(['episodes']);
   const handleLoadMoreClick = () => {
     console.log('Load more');
   };

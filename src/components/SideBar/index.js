@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -8,6 +10,9 @@ import PodcastsIcon from '@mui/icons-material/Podcasts';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import RuFlag from '../../assets/icons/RuFlag';
+import UsFlag from '../../assets/icons/UsFlag';
 
 import { sideBarButtons } from '../../constants/sideBar';
 import { StyledLink } from '../../styles/containers';
@@ -22,6 +27,11 @@ const styles = {
 
 const SideBar = () => {
   const { pathname } = useLocation();
+  const { t, i18n } = useTranslation(['sideBar']);
+
+  const changeLanguage = language => {
+    i18n.changeLanguage(language);
+  };
 
   return (
     <List sx={{ borderRight: 1, borderColor: 'grey.200' }}>
@@ -38,23 +48,30 @@ const SideBar = () => {
       </StyledLink>
 
       {sideBarButtons.map(button => (
-        <StyledLink to={button.link} key={button.text}>
+        <StyledLink to={button.link} key={button.name}>
           <ListItem disabled={button.link === pathname} button>
             <ListItemIcon>{button.icon}</ListItemIcon>
-            <ListItemText sx={styles.sideBarText} primary={button.text} />
+            <ListItemText sx={styles.sideBarText} primary={t(button.name)} />
           </ListItem>
         </StyledLink>
       ))}
-      <Divider sx={{ mt: 5 }} />
-
       <StyledLink to="/account">
-        <ListItem button>
+        <ListItem sx={{ mt: 5 }} button>
           <ListItemIcon>
             <AccountCircleIcon />
           </ListItemIcon>
-          <ListItemText sx={styles.sideBarText} primary="Your Account" />
+          <ListItemText sx={styles.sideBarText} primary={t('yourAccount')} />
         </ListItem>
       </StyledLink>
+      <Divider />
+      <ListItem sx={{ mt: 1 }}>
+        <IconButton sx={{ backgroundColor: 'grey.200', mr: 3 }} onClick={() => changeLanguage('ru')}>
+          <RuFlag />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: 'grey.200' }} onClick={() => changeLanguage('en')}>
+          <UsFlag />
+        </IconButton>
+      </ListItem>
     </List>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 import HeadShow from '../../components/LatestShows/HeadShow';
 import Show from '../../components/shared/Show';
@@ -8,6 +9,7 @@ import { useGetPopularShowsQuery } from '../../store/queries/shows';
 
 const LatestShows = () => {
   const { data, isLoading } = useGetPopularShowsQuery();
+  const { t, i18n } = useTranslation(['latestShows']);
 
   if (isLoading) {
     return <Spinner />;
@@ -20,8 +22,7 @@ const LatestShows = () => {
     <>
       <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
       <ListWrapper>
-        <div className="primary-text">Popular Shows on Slice</div>
-
+        <div className="primary-text">{t('latestShowsTitle')}</div>
         <Grid container spacing={4}>
           {transformedData.map(show => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={show.id}>
