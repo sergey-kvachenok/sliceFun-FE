@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -19,12 +20,14 @@ const Wrapper = styled.div`
 `;
 
 const Verified = ({ verified }) => {
+  const { t } = useTranslation(['verified']);
+
   return (
     <Wrapper>
       <div className="verified-box">
         {verified ? <CheckCircleIcon color="success" /> : <CancelIcon color="error" />}
       </div>
-      <span className="secondary-text">{verified ? 'Verified' : 'Not Verified'}</span>
+      <span className="secondary-text">{verified ? t('verified') : t('notVerified')}</span>
     </Wrapper>
   );
 };

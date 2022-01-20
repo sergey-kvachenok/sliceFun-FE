@@ -4,17 +4,17 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 
 export const sideBarButtons = [
   {
-    text: 'Latest',
+    name: 'latest',
     icon: <FiberNewIcon />,
     link: '/',
   },
   {
-    text: 'Shows',
+    name: 'shows',
     icon: <LibraryMusicIcon />,
     link: '/shows',
   },
   {
-    text: 'Library',
+    name: 'library',
     icon: <VideoLibraryIcon />,
     link: '/library',
   },

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 import Spinner from '../../components/shared/Spinner';
 import Table from '../../components/shared/Table';
@@ -9,37 +10,6 @@ import { useGetLibraryQuery } from '../../store/queries/shows';
 const createData = (...columns) => {
   return columns.reduce((acc, column, index) => ({ ...acc, [`column-${index + 1}`]: column }), {});
 };
-
-const columns = [
-  {
-    label: '',
-  },
-  {
-    label: 'Title',
-  },
-  {
-    label: 'Publish Date',
-  },
-];
-
-const tabs = [
-  {
-    slug: 'latestUnplayed',
-    label: 'Latest Unplayed',
-  },
-  {
-    slug: 'all',
-    label: 'All',
-  },
-  {
-    slug: 'purchased',
-    label: 'Purchased',
-  },
-  {
-    slug: 'downloaded',
-    label: 'Downloaded',
-  },
-];
 
 const getRows = (data = []) => {
   return data.map(item => {
@@ -65,8 +35,40 @@ const getRows = (data = []) => {
 };
 
 const Library = () => {
+  const { t } = useTranslation(['library']);
   const [activeTab, setActiveTab] = useState('latestUnplayed');
   const { data, isLoading } = useGetLibraryQuery({ category: activeTab }, { refetchOnReconnect: true });
+
+  const columns = [
+    {
+      label: t('columns.firstColumn'),
+    },
+    {
+      label: t('columns.secondColumn'),
+    },
+    {
+      label: t('columns.thirdColumn'),
+    },
+  ];
+
+  const tabs = [
+    {
+      slug: 'latestUnplayed',
+      label: t('tabs.firstTab'),
+    },
+    {
+      slug: 'all',
+      label: t('tabs.secondTab'),
+    },
+    {
+      slug: 'purchased',
+      label: t('tabs.thirdTab'),
+    },
+    {
+      slug: 'downloaded',
+      label: t('tabs.fourthTab'),
+    },
+  ];
 
   if (isLoading) {
     return <Spinner />;
