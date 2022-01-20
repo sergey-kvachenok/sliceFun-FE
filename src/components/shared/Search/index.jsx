@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, zIndexes, breakpoints } from '../../../styles/theme';
+import { colors, zIndexes } from '../../../styles/theme';
 
 const StyledInput = styled.input.attrs({ placeholder: 'Search' })`
   cursor: pointer;

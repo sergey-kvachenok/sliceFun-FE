@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '../../../shared/Button';
 import Verified from '../../../shared/Verified';
+import { ImageWrapper } from '../../../../styles/containers';
 
 const Wrapper = styled.div`
   .content-container {
@@ -11,13 +12,13 @@ const Wrapper = styled.div`
 
 const Info = ({ imageSrc, title, verified }) => {
   return (
-    <Wrapper className="info">
+    <Wrapper>
       <div className="content-container">
-        <div className="header-poster">
+        <ImageWrapper height={120} width={120}>
           <img height="120" width="120" src={imageSrc} alt="Podcast poster" />
-        </div>
+        </ImageWrapper>
 
-        <div className="info">
+        <div>
           <Verified verified={verified} />
 
           <div className="primary-text">{title}</div>

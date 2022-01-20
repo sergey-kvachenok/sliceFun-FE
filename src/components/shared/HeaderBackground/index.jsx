@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DefaultImage from '../../../assets/images/defaultHeader.png'
+import DefaultImage from '../../../assets/images/defaultHeader.png';
 
 const StyledImage = styled.img`
   position: absolute;

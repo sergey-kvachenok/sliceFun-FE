@@ -2,9 +2,11 @@ import Button from '@mui/material/Button';
 import { colors } from '../../../styles/theme';
 
 const defaultStyles = {
-  textTransform: 'capitalize',
-  color: colors.darkBlue1,
   border: 2,
+  color: colors.darkBlue1,
+  textTransform: 'capitalize',
+  transition: '0.6s',
+
   '&:hover': {
     color: colors.pink,
     border: 2,

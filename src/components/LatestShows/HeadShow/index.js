@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,7 +7,7 @@ import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutli
 import Button from '../../shared/Button';
 import Verified from '../../shared/Verified';
 import HeaderBackground from '../../shared/HeaderBackground';
-import { colors } from '../../../styles/theme';
+import { ImageWrapper } from '../../../styles/containers';
 import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 
 const Wrapper = styled.div`
@@ -64,11 +64,11 @@ const HeadShow = ({ showData }) => {
       <HeaderBackground backgroundImageSrc={mainImage} />
       <div className="info">
         <div className="content-container">
-          <div className="header-poster">
+          <ImageWrapper height={120} width={120}>
             <img height="120" width="120" src={image} alt="Podcast poster" />
-          </div>
+          </ImageWrapper>
 
-          <div className="info">
+          <div>
             <Verified verified={verified} />
 
             <div className="primary-text">{title}</div>

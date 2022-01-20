@@ -4,7 +4,7 @@ import Button from '../../shared/Button';
 import Search from '../../shared/Search';
 import HeaderBackground from '../../shared/HeaderBackground';
 import Info from './Info';
-import { colors, breakpoints } from '../../../styles/theme';
+import { breakpoints } from '../../../styles/theme';
 
 const Wrapper = styled.div`
   height: 250px;
@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   .content-container {
     position: absolute;
     bottom: -20px;
+
     @media (max-width: ${breakpoints.xs}) {
       bottom: -5px;
       left: 15px;
