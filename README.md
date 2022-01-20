@@ -22,6 +22,7 @@ In `production` mode the app registers the `service-worker` and can work as `PWA
 As a BE AWS lambda functions were used.
 
 # Claudfront deployment
+https://d2wqj3bui5g2q1.cloudfront.net
 
 # Repositories
   FE: https://github.com/sergey-kvachenok/sliceFun-FE
