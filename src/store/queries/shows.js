@@ -33,8 +33,8 @@ export const showsApi = createApi({
         };
       },
       transformResponse: (response, meta, arg) => {
-        return response
-        }
+        return response;
+      },
     }),
     getShowsById: builder.query({
       query: args => {

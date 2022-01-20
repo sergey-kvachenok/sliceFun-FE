@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Verified from '../../shared/Verified';
 import { StyledLink } from '../../../styles/containers';
-import { breakpoints } from '../../../styles/theme';
 import Typography from '@mui/material/Typography';
 
 const Show = ({ show }) => {
@@ -46,53 +45,3 @@ const Show = ({ show }) => {
 };
 
 export default Show;
-
-// import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-// import Verified from '../Verified';
-
-// const StyledLink = styled(Link)`
-// /* display: flex;
-// flex-direction: column; */
-// max-width: 150px;
-// display: block;
-// width: 100%;
-// color: inherit;
-//   text-decoration: none;
-
-//   .image {
-//     height: 200px;
-//     width: 200px;
-
-//     img {
-//       height: inherit;
-//     width: inherit;
-//     }
-//   }
-
-//   .info {
-//     margin: 10px 0;
-//     text-align: center;
-//   }
-// `
-
-// const Show = ({show}) => {
-//   const {id, image, verified, title} = show || {};
-
-//   return (
-//   <StyledLink to={`shows/${id}`}>
-//   <div className="image">
-//     <img src={image} alt="Show"/>
-//   </div>
-
-//   <div className="info">
-//     <Verified verified={verified} />
-//     <div className="primary-text">{title}</div>
-//   </div>
-
-//   </StyledLink>
-//   )
-
-// }
-
-// export default Show;

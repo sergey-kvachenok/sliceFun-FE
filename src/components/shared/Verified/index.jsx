@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-import { colors } from '../../../styles/theme';
-
 const Wrapper = styled.div`
   display: flex;
   align-items: center;

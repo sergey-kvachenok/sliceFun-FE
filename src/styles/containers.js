@@ -30,3 +30,15 @@ export const StyledLink = styled(Link)`
     }
   }
 `;
+
+export const ImageWrapper = styled.div`
+  height: ${({ height = 70 }) => `${height}px`};
+  width: ${({ width = 70 }) => `${width}px`};
+  margin-right: 15px;
+
+  img {
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+  }
+`;

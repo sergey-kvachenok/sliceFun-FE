@@ -2,25 +2,20 @@ import styled from 'styled-components';
 import { colors } from '../../styles/theme';
 
 export const Wrapper = styled.div`
- position: fixed;
- background: ${colors.opacityGray};
-     width: 100%;
-    bottom: 0;
-    padding: 5px 20px;
-
-     @media (hover: hover) {
-    &:hover {
-      background-color: ${colors.white};
-    }
-  }
-`
+  background: ${colors.opacityGray};
+  color: ${colors.white};
+  bottom: 0;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  position: fixed;
+  max-width: 1000px;
+  width: 100%;
+`;
 
 export const PlayerContent = styled.div`
-  max-width: 700px;
-  border-radius: 5px;
   box-sizing: border-box;
   margin: auto;
-  width: 100%;
   display: flex;
   justify-content: space-between;
 `;
@@ -28,21 +23,9 @@ export const PlayerContent = styled.div`
 export const AudioInfo = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
   margin-right: 20px;
 
-  .poster {
-    height: 50px;
-    width: 50px;
-    margin-right: 15px;
-
-    img {
-      height: inherit;
-    }
-  }
-
   .text {
-    color: ${() => colors.darkBlue1};
     font-size: 12px;
     margin: 0;
   }
@@ -55,11 +38,10 @@ export const AudioInfo = styled.div`
 export const AudioPlayerWrapper = styled.div`
   align-items: center;
   display: flex;
-  width: 100%;
 
   .forwardBackward {
     background: none;
-    color: ${() => colors.darkBlue1};
+    color: ${() => colors.white};
     border: none;
     display: flex;
     align-items: center;
@@ -100,6 +82,11 @@ export const AudioPlayerWrapper = styled.div`
 
   .currentTime {
     margin-left: 20px;
+    margin-right: 5px;
+  }
+
+  .duration {
+    margin-left: 5px;
   }
 `;
 

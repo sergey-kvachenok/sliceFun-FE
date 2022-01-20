@@ -13,6 +13,13 @@ margin: 0 auto;
     }
   }
 
+   .xs-large-hidden {
+    @media (max-width: ${breakpoints.xsMax}) {
+        display: none;
+    }
+  }
+
+
   .primary-text {
     font-family: Montserrat-Bold;
     font-size: 16px;
@@ -42,18 +49,6 @@ margin: 0 auto;
 
   .display-flex {
     display: flex;
-  }
-
-  .header-poster {
-    height: 120px;
-    width: 120px;
-    margin-right: 15px;
-
-    img {
-      height: inherit;
-      width: inherit;
-      object-fit: cover;
-    }
   }
 
   .margin-top {

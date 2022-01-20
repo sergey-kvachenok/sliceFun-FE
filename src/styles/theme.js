@@ -7,7 +7,7 @@ export const colors = {
   darkBlue: '#3452a5',
   darkBlue1: '#06072d',
   oceanGreen: '#26c9c3',
-  opacityGray: '#06072d4f',
+  opacityGray: '#2c2c39de',
   white: '#fff',
 };
 
