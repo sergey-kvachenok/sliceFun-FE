@@ -93,47 +93,45 @@ const AudioPlayer = ({ audio, image }) => {
 
   return (
     <Wrapper>
-      <PlayerContent>
-        <AudioInfo>
-          <ImageWrapper height={50} width={50}>
-            <img src={imageSrc} height="50" width="50" alt="Current audio track poster" />
-          </ImageWrapper>
-          <div>
-            <p className="title text">{title}</p>
-            <p className="text">Duration: {audioDuration ? audioDuration : '00:00'}</p>
-          </div>
-        </AudioInfo>
+      <AudioInfo>
+        <ImageWrapper height={50} width={50}>
+          <img src={imageSrc} height="50" width="50" alt="Current audio track poster" />
+        </ImageWrapper>
+        <div>
+          <p className="title text">{title}</p>
+          <p className="text">Duration: {audioDuration ? audioDuration : '00:00'}</p>
+        </div>
+      </AudioInfo>
 
-        <AudioPlayerWrapper>
-          <audio ref={audioPlayer} onEnded={handleEndEvent} src={audioSrc} preload="metadata"></audio>
+      <AudioPlayerWrapper>
+        <audio ref={audioPlayer} onEnded={handleEndEvent} src={audioSrc} preload="metadata"></audio>
 
-          <button className="forwardBackward" onClick={backTimeshift}>
-            <ArrowBackOutlinedIcon fontSize="small" /> {shiftTime}
-          </button>
+        <button className="forwardBackward" onClick={backTimeshift}>
+          <ArrowBackOutlinedIcon fontSize="small" /> {shiftTime}
+        </button>
 
-          <button onClick={togglePlayPause} className="playPause">
-            {isPlaying ? <PauseRoundedIcon fontSize="large" /> : <PlayArrowRoundedIcon fontSize="large" />}
-          </button>
+        <button onClick={togglePlayPause} className="playPause">
+          {isPlaying ? <PauseRoundedIcon fontSize="large" /> : <PlayArrowRoundedIcon fontSize="large" />}
+        </button>
 
-          <button className="forwardBackward" onClick={forwardTimeshift}>
-            {shiftTime} <ArrowForwardOutlinedIcon fontSize="small" />
-          </button>
+        <button className="forwardBackward" onClick={forwardTimeshift}>
+          {shiftTime} <ArrowForwardOutlinedIcon fontSize="small" />
+        </button>
 
-          {/* current time */}
-          <div className="currentTime xs-hidden">{calculateTime(currentTime)}</div>
+        {/* current time */}
+        <div className="currentTime xs-hidden">{calculateTime(currentTime)}</div>
 
-          {/* progress bar */}
-          <ProgressBar
-            className="xs-hidden"
-            beforeWidth={getProgressBarBeforeWidth(progressBar.current?.value, duration)}
-            ref={progressBar}
-            onChange={changeRange}
-          />
+        {/* progress bar */}
+        <ProgressBar
+          className="xs-hidden"
+          beforeWidth={getProgressBarBeforeWidth(progressBar.current?.value, duration)}
+          ref={progressBar}
+          onChange={changeRange}
+        />
 
-          {/* duration */}
-          <div className="duration xs-large-hidden">{audioDuration ? audioDuration : '00:00'}</div>
-        </AudioPlayerWrapper>
-      </PlayerContent>
+        {/* duration */}
+        <div className="duration xs-large-hidden">{audioDuration ? audioDuration : '00:00'}</div>
+      </AudioPlayerWrapper>
     </Wrapper>
   );
 };

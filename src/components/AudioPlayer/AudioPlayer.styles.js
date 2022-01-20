@@ -2,28 +2,26 @@ import styled from 'styled-components';
 import { colors } from '../../styles/theme';
 
 export const Wrapper = styled.div`
-  background: ${colors.opacityGray};
   color: ${colors.white};
   bottom: 0;
-  border-radius: 15px;
   box-sizing: border-box;
   padding: 5px 20px;
   position: fixed;
   max-width: 1000px;
   width: 100%;
-`;
-
-export const PlayerContent = styled.div`
-  box-sizing: border-box;
-  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  box-sizing: border-box;
 `;
 
 export const AudioInfo = styled.div`
+  background: ${colors.opacityGray};
+  border-radius: 15px;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   margin-right: 20px;
+  overflow: hidden;
 
   .text {
     font-size: 12px;
@@ -37,7 +35,11 @@ export const AudioInfo = styled.div`
 
 export const AudioPlayerWrapper = styled.div`
   align-items: center;
+  background: ${colors.opacityGray};
   display: flex;
+  max-height: 40px;
+  border-radius: 15px;
+  padding: 0 5px;
 
   .forwardBackward {
     background: none;

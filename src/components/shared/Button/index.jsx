@@ -2,14 +2,17 @@ import Button from '@mui/material/Button';
 import { colors } from '../../../styles/theme';
 
 const defaultStyles = {
-  border: 2,
-  color: colors.darkBlue1,
   textTransform: 'capitalize',
   transition: '0.6s',
 
-  '&:active': {
-    color: colors.pink,
+  '&, &:focus': {
     border: 2,
+    color: colors.darkBlue1,
+  },
+
+  '&:active': {
+    border: 2,
+    color: colors.pink,
   },
 
   '@media (hover: hover)': {
