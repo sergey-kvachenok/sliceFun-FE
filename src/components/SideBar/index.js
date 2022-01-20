@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import List from '@mui/material/List';
@@ -23,6 +24,7 @@ const styles = {
 
 const SideBar = () => {
   const { pathname } = useLocation();
+  const { t } = useTranslation(['sideBar']);
 
   return (
     <List sx={{ borderRight: 1, borderColor: 'grey.200' }}>
@@ -39,10 +41,10 @@ const SideBar = () => {
       </StyledLink>
 
       {sideBarButtons.map(button => (
-        <StyledLink to={button.link} key={button.text}>
+        <StyledLink to={button.link} key={button.name}>
           <ListItem disabled={button.link === pathname} button>
             <ListItemIcon>{button.icon}</ListItemIcon>
-            <ListItemText sx={styles.sideBarText} primary={button.text} />
+            <ListItemText sx={styles.sideBarText} primary={t(button.name)} />
           </ListItem>
         </StyledLink>
       ))}
@@ -52,7 +54,7 @@ const SideBar = () => {
           <ListItemIcon>
             <AccountCircleIcon />
           </ListItemIcon>
-          <ListItemText sx={styles.sideBarText} primary="Your Account" />
+          <ListItemText sx={styles.sideBarText} primary={t('yourAccount')} />
         </ListItem>
       </StyledLink>
     </List>

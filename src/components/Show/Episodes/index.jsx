@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CustomTabs from '../../shared/Tabs';
 import Episode from './Episode';
@@ -44,6 +45,8 @@ const tabs = [
 ];
 
 const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
+  const { t } = useTranslation(['episodes']);
+
   const handleLoadMoreClick = () => {
     console.log('Load more');
   };
@@ -53,7 +56,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       <CustomTabs tabs={tabs} />
 
       <ListWrapper>
-        <div className="primary-text">Latest Episodes</div>
+        <div className="primary-text">{t('latestEpisodes')}</div>
         {latestEpisodes.map(episode => (
           <Episode episode={episode} key={episode.id} />
         ))}
@@ -63,7 +66,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       </ListWrapper>
 
       <ListWrapper>
-        <div className="primary-text">Premium Episodes</div>
+        <div className="primary-text">{t('premiumEpisodes')}</div>
         {premiumEpisodes.map(episode => (
           <Episode episode={episode} key={episode.id} />
         ))}
@@ -73,7 +76,7 @@ const Episodes = ({ latestEpisodes, premiumEpisodes, video }) => {
       </ListWrapper>
 
       <ListWrapper>
-        <div className="primary-text">Latest Video</div>
+        <div className="primary-text">{t('latestVideo')}</div>
         {video.map(episode => (
           <VideoEpisode episode={episode} key={episode.id} />
         ))}

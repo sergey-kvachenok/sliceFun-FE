@@ -10,8 +10,6 @@ import SideBar from './';
 const SideBarContainer = () => {
   const dispatch = useDispatch();
   const { isMobileSidebarActive } = useSelector(({ sidebar }) => sidebar);
-  // toggleIsMobileSidebarActive
-  console.log(isMobileSidebarActive);
 
   const handleMobileSidebarToggle = () => {
     dispatch(toggleIsMobileSidebarActive());

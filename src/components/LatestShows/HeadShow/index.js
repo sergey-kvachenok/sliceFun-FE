@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -31,6 +32,7 @@ const Wrapper = styled.div`
 `;
 
 const HeadShow = ({ showData }) => {
+  const { t } = useTranslation(['latestShows']);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isPlaying, id } = useSelector(({ player }) => player);
@@ -88,7 +90,12 @@ const HeadShow = ({ showData }) => {
                 />
               )}
 
-              <Button variant="outlined" title="Go to Show" customStyles={{ ml: 2 }} onClick={redirectToShow} />
+              <Button
+                variant="outlined"
+                title={t('headShowButton')}
+                customStyles={{ ml: 2 }}
+                onClick={redirectToShow}
+              />
             </div>
           </div>
         </div>

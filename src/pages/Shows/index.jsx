@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import debounce from 'lodash.debounce';
 import Grid from '@mui/material/Grid';
 import Show from '../../components/shared/Show';
@@ -10,6 +11,7 @@ import { useGetShowsQuery } from '../../store/queries/shows';
 const debounceDelay = 500;
 
 const Shows = () => {
+  const { t } = useTranslation(['shows']);
   const [searchQuery, setSearchQuery] = useState('');
   console.log('searchQuery', searchQuery);
   const { data, isLoading } = useGetShowsQuery({ search: searchQuery });
@@ -31,7 +33,7 @@ const Shows = () => {
 
   const isEmpty = !data.length;
   const searchResultContent = isEmpty ? (
-    <div className="primary-text">No results</div>
+    <div className="primary-text">{t('noResults')}</div>
   ) : (
     <Grid container spacing={4} sx={{ padding: 0 }}>
       {data.map(show => (
