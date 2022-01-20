@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import Button from '../../shared/Button';
 import Search from '../../shared/Search';
 import HeaderBackground from '../../shared/HeaderBackground';
@@ -29,7 +30,9 @@ const Panel = styled.div`
   justify-content: space-between;
 `;
 
-const Header = React.memo(({ mainImage, title, verified, handleSearchChange }) => {
+const Header = ({ mainImage, title, verified, handleSearchChange }) => {
+  const { t } = useTranslation(['common']);
+
   return (
     <Wrapper className="container-padding">
       <HeaderBackground backgroundImageSrc={mainImage} />
@@ -38,14 +41,14 @@ const Header = React.memo(({ mainImage, title, verified, handleSearchChange }) =
         <Search handleSearchChange={handleSearchChange} />
 
         <div className="buttons">
-          <Button variant="outlined" title="Manage subscription" customStyles={{ mr: 2 }} />
-          <Button variant="outlined" title="Share" />
+          <Button variant="outlined" title={t('manageSubscriptions')} customStyles={{ mr: 2 }} />
+          <Button variant="outlined" title={t('share')} />
         </div>
       </Panel>
 
       <Info imageSrc={mainImage} title={title} verified={verified} />
     </Wrapper>
   );
-});
+};
 
 export default Header;

@@ -9,7 +9,7 @@ import { useGetPopularShowsQuery } from '../../store/queries/shows';
 
 const LatestShows = () => {
   const { data, isLoading } = useGetPopularShowsQuery();
-  const { t, i18n } = useTranslation(['latestShows']);
+  const { t } = useTranslation(['latestShows']);
 
   if (isLoading) {
     return <Spinner />;

@@ -11,6 +11,10 @@ const a11yProps = index => {
 };
 
 const defaultStyles = {
+  '& .MuiTabs-flexContainer': {
+    flexWrap: 'wrap',
+  },
+
   '& .MuiTabs-indicator': {
     display: 'none',
   },

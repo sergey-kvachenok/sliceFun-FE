@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
 import Button from '../../shared/Button';
@@ -44,6 +45,7 @@ const Wrapper = styled.div`
 `;
 
 const Episode = ({ episode }) => {
+  const { t } = useTranslation(['common']);
   const dispatch = useDispatch();
   const { isPlaying, id } = useSelector(({ player }) => player);
 
@@ -107,7 +109,7 @@ const Episode = ({ episode }) => {
 
         <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>
 
-        <Button title="Expand more" onClick={handleExpandClick} customStyles={{ mt: 1 }} />
+        <Button title={t('expandMore')} onClick={handleExpandClick} customStyles={{ mt: 1 }} />
       </div>
     </Wrapper>
   );

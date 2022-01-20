@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -13,7 +12,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import RuFlag from '../../assets/icons/RuFlag';
 import UsFlag from '../../assets/icons/UsFlag';
-
 import { sideBarButtons } from '../../constants/sideBar';
 import { StyledLink } from '../../styles/containers';
 

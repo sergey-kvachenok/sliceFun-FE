@@ -6,11 +6,17 @@ const defaultStyles = {
   color: colors.darkBlue1,
   textTransform: 'capitalize',
   transition: '0.6s',
-  border: 2,
-  
-  '&:hover': {
+
+  '&:active': {
     color: colors.pink,
     border: 2,
+  },
+
+  '@media (hover: hover)': {
+    '&:hover': {
+      color: colors.pink,
+      border: 2,
+    },
   },
 };
 
