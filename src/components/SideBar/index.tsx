@@ -27,7 +27,7 @@ const SideBar = () => {
   const { pathname } = useLocation();
   const { t, i18n } = useTranslation(['sideBar']);
 
-  const changeLanguage = language => {
+  const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
 

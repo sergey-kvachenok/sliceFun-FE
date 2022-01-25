@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import './index.css';
 import App from './App';
 import { store } from './store';
-import { theme } from '../src/styles/theme';
+import { theme } from './styles/theme';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import './i18n';

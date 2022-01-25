@@ -1,3 +1,4 @@
+import React from 'react';
 import Alert from '@mui/material/Alert';
 import { makeStyles } from '@mui/styles';
 import { zIndexes } from '../../../styles/theme';
@@ -10,7 +11,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Error = ({ message, customClassName }) => {
+type ErrorProps = {
+  message: String,
+  customClassName: String
+}
+
+const Error = ({ message, customClassName }: ErrorProps) => {
   const classes = useStyles();
 
   return (

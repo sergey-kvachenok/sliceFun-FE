@@ -10,6 +10,7 @@ import Verified from '../../shared/Verified';
 import HeaderBackground from '../../shared/HeaderBackground';
 import { ImageWrapper } from '../../../styles/containers';
 import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
+import {RootState} from '../../../store'
 
 const Wrapper = styled.div`
   height: 250px;
@@ -35,7 +36,7 @@ const HeadShow = ({ showData }) => {
   const { t } = useTranslation(['latestShows']);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isPlaying, id } = useSelector(({ player }) => player);
+  const { isPlaying, id } = useSelector(({ player }: RootState) => player);
 
   const { id: showId, verified, title, image, mainImage, source } = showData || {};
 

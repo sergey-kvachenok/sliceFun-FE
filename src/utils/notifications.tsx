@@ -1,8 +1,8 @@
-const configureOptions = message => ({
+const configureOptions = (message: string): NotificationOptions => ({
   body: message,
   icon: '/icon-96x96.png',
   image: '/icon-192x192.png',
-  dir: 'rtl',
+  dir: "rtl",
   lang: 'en-US',
   badge: '/icon-96x96.png',
   vibrate: [200, 100, 200],
@@ -38,7 +38,7 @@ export const configureSubscription = async () => {
   }
 };
 
-const sendRegistration = async subscription => {
+const sendRegistration = async (subscription: PushSubscription) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_PUSH_SERVER}/app/register`, {
       method: 'POST',
@@ -59,7 +59,7 @@ const sendRegistration = async subscription => {
 const displayConfirmationNotification = async () => {
   try {
     const message = 'You have been successfully subscribed';
-    const options = configureOptions(message);
+    const options: NotificationOptions = configureOptions(message);
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.ready.then(swreg => swreg.showNotification('Successfully subscribed', options));

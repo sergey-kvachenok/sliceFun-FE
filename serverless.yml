@@ -4,7 +4,7 @@ useDotenv: true
 provider:
     name: aws
     runtime: nodejs14.x
-    profile: serverlessUser
+    profile: ${env:AWS_PROFILE}
     region: ${env:AWS_REGION}
 
 plugins:

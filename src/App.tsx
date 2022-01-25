@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/styles';
 import { createTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import AudioPlayer from '../src/components/AudioPlayer';
+import AudioPlayer from './components/AudioPlayer';
 import GlobalStyle from './styles/globalStyles';
 import Error from './components/shared/Error';
 import Spinner from './components/shared/Spinner';
@@ -13,11 +13,13 @@ import SideBarBurgerButton from './components/shared/SideBarBurgerButton';
 import { routes } from './constants/routes';
 import { configureSubscription } from './utils/notifications';
 import useNetwork from './hooks/useNetwork';
+import {RootState} from './store'
+import React from 'react';
 
 const theme = createTheme();
 
 const App = () => {
-  const { id } = useSelector(({ player }) => player);
+  const { id } = useSelector(({ player }: RootState) => player);
   const isOnline = useNetwork();
 
   // subscribes to push notifications from server
@@ -39,7 +41,10 @@ const App = () => {
               <SideBarBurgerButton />
             </Grid>
 
-            <Grid sx={{ padding: '0' }} item xs={12} sm={8} md={9} ld={10}>
+            <Grid
+             sx={{ padding: 0}}
+             item xs={12} sm={8} md={9} ld={10}
+             >
               <Routes>
                 {routes.map(({ path, component }) => {
                   const RouteComponent = component;

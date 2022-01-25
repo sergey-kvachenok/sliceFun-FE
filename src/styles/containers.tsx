@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { colors } from '../styles/theme';
+import { colors } from './theme';
+import { ImageProps } from './types';
 
 export const ListWrapper = styled.div`
   padding: 20px 16px;
@@ -32,7 +33,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ImageWrapper = styled.div`
-  height: ${({ height = 70 }) => `${height}px`};
+  height: ${({ height = 70 }: ImageProps) => `${height}px`};
   width: ${({ width = 70 }) => `${width}px`};
   margin-right: 15px;
 

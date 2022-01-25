@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Drawer from '@mui/material/Drawer';
-import SideBar from './';
+import SideBar from '.';
 import { toggleIsMobileSidebarActive } from '../../store/slices/sidebarSlice';
+import {RootState} from '../../store'
 
 const SideBarContainer = () => {
   const dispatch = useDispatch();
-  const { isMobileSidebarActive } = useSelector(({ sidebar }) => sidebar);
+  const { isMobileSidebarActive } = useSelector(({ sidebar }: RootState) => sidebar);
 
   const handleMobileSidebarToggle = () => {
     dispatch(toggleIsMobileSidebarActive());

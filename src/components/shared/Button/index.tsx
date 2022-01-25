@@ -23,9 +23,20 @@ const defaultStyles = {
   },
 };
 
-const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {} }) => {
+type CustomButtonProps = {
+  title: String,
+  variant: String,
+  customStyles: Object,
+  onClick: Function
+}
+
+const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {} }: CustomButtonProps) => {
   return (
-    <Button variant={variant} sx={{ ...defaultStyles, ...customStyles }} size="small" onClick={onClick}>
+    <Button 
+    variant={variant}
+     sx={{ ...defaultStyles, ...customStyles }}
+      size="small"
+       onClick={onClick}>
       {title}
     </Button>
   );

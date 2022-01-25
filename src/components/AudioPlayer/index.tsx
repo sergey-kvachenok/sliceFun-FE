@@ -5,8 +5,9 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import { setCurrentTime, setIsPlaying, setDuration } from '../../store/slices/playerSlice';
-import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper, PlayerContent } from './AudioPlayer.styles';
+import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper } from './AudioPlayer.styles';
 import { ImageWrapper } from '../../styles/containers';
+import { RootState } from '../../store';
 
 const shiftTime = 15;
 
@@ -24,9 +25,9 @@ const getProgressBarBeforeWidth = (currentProgress, duration) => {
   return beforeWidth;
 };
 
-const AudioPlayer = ({ audio, image }) => {
+const AudioPlayer = () => {
   const dispatch = useDispatch();
-  const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }) => player);
+  const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }: RootState) => player);
 
   // references
   const audioPlayer = useRef(); // reference our audio component

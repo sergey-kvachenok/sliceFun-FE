@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -19,7 +20,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Verified = ({ verified }) => {
+type VerifiedProps = {
+  verified: Boolean
+}
+
+const Verified = ({ verified }: VerifiedProps) => {
   const { t } = useTranslation(['verified']);
 
   return (

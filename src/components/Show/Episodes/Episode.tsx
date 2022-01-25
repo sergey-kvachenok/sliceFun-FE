@@ -7,6 +7,7 @@ import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
 import Button from '../../shared/Button';
 import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
+import { RootState } from '../../../store';
 
 const Wrapper = styled.div`
   align-items: baseline;
@@ -47,7 +48,7 @@ const Wrapper = styled.div`
 const Episode = ({ episode }) => {
   const { t } = useTranslation(['common']);
   const dispatch = useDispatch();
-  const { isPlaying, id } = useSelector(({ player }) => player);
+  const { isPlaying, id } = useSelector(({ player }: RootState) => player);
 
   const [currentEpisodeId, setCurrentEpisodeId] = useState(null);
   const [isExpanded, setExpanded] = useState(false);

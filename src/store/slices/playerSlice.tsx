@@ -1,13 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const defaultImage = 'https://slice-fun-podcasts.s3.eu-west-1.amazonaws.com/record-classix/record-classix.jpeg';
+type PlayerProps = {
+  id: String | null,
+  isPlaying: Boolean,
+  title: String,
+  audioSrc: String | null,
+  imageSrc: String | null,
+  duration: Number,
+  currentTime: Number
+}
 
-const initialState = {
+
+const initialState: PlayerProps = {
   id: null,
   isPlaying: false,
-  title: 'Quickly Kevin, will he score?',
+  title: '',
   audioSrc: null,
-  imageSrc: defaultImage,
+  imageSrc: null,
   duration: 0,
   currentTime: 0,
 };
@@ -16,22 +25,22 @@ export const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
-    setPlayerInfo: (state, action) => {
+    setPlayerInfo: (state, action: PayloadAction<PlayerProps>) => {
       const { id, isPlaying, audioSrc, imageSrc, title } = action.payload;
 
       state.id = id;
       state.isPlaying = isPlaying;
       state.audioSrc = audioSrc;
       state.title = title;
-      state.imageSrc = imageSrc || defaultImage;
+      state.imageSrc = imageSrc;
     },
-    setIsPlaying: (state, action) => {
+    setIsPlaying: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
     },
-    setDuration: (state, action) => {
+    setDuration: (state, action:  PayloadAction<number>) => {
       state.duration = action.payload;
     },
-    setCurrentTime: (state, action) => {
+    setCurrentTime: (state, action:  PayloadAction<number>) => {
       state.currentTime = action.payload;
     },
   },
