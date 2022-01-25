@@ -8,7 +8,7 @@ import { store } from './store';
 import { theme } from '../src/styles/theme';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import './i18n';
+import './utils/i18n';
 
 ReactDOM.render(
   <React.StrictMode>

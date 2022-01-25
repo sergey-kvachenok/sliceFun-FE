@@ -67,7 +67,7 @@ const HeadShow = ({ showData }) => {
       <div className="info">
         <div className="content-container">
           <ImageWrapper height={120} width={120}>
-            <img height="120" width="120" src={image} alt="Podcast poster" />
+            <img data-testid="podcast-poster" height="120" width="120" src={image} alt="Podcast poster" />
           </ImageWrapper>
 
           <div>
@@ -78,12 +78,14 @@ const HeadShow = ({ showData }) => {
             <div className="header">
               {isPlaying ? (
                 <PauseCircleOutlineOutlinedIcon
+                  data-testid="pause-icon"
                   fontSize="large"
                   className="pointer play-pause-button"
                   onClick={togglePlayPause}
                 />
               ) : (
                 <PlayCircleOutlinedIcon
+                  data-testid="play-icon"
                   fontSize="large"
                   className="pointer play-pause-button"
                   onClick={togglePlayPause}

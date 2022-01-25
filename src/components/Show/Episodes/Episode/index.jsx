@@ -5,8 +5,8 @@ import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
-import Button from '../../shared/Button';
-import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
+import Button from '../../../shared/Button';
+import { setPlayerInfo, setIsPlaying } from '../../../../store/slices/playerSlice';
 
 const Wrapper = styled.div`
   align-items: baseline;
@@ -90,7 +90,9 @@ const Episode = ({ episode }) => {
 
   return (
     <Wrapper>
-      <div className="date secondary-text">{dayjs(new Date(date)).format('MMM D, YYYY')}</div>
+      <div data-testid="date" className="date secondary-text">
+        {dayjs(new Date(date)).format('MMM D, YYYY')}
+      </div>
 
       <div className="info">
         <div className="header">
@@ -109,7 +111,7 @@ const Episode = ({ episode }) => {
 
         <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>
 
-        <Button title={t('expandMore')} onClick={handleExpandClick} customStyles={{ mt: 1 }} />
+        <Button testId="expand-more" title={t('expandMore')} onClick={handleExpandClick} customStyles={{ mt: 1 }} />
       </div>
     </Wrapper>
   );

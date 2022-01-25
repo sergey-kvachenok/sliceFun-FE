@@ -53,6 +53,7 @@ const SideBar = () => {
           </ListItem>
         </StyledLink>
       ))}
+
       <StyledLink to="/account">
         <ListItem sx={{ mt: 5 }} button>
           <ListItemIcon>
@@ -62,8 +63,13 @@ const SideBar = () => {
         </ListItem>
       </StyledLink>
       <Divider />
+
       <ListItem sx={{ mt: 1 }}>
-        <IconButton sx={{ backgroundColor: 'grey.200', mr: 3 }} onClick={() => changeLanguage('ru')}>
+        <IconButton
+          data-testid="ru-lang"
+          sx={{ backgroundColor: 'grey.200', mr: 3 }}
+          onClick={() => changeLanguage('ru')}
+        >
           <RuFlag />
         </IconButton>
         <IconButton sx={{ backgroundColor: 'grey.200' }} onClick={() => changeLanguage('en')}>

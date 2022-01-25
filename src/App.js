@@ -1,4 +1,5 @@
 import { useEffect, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@mui/styles';
@@ -14,9 +15,10 @@ import { routes } from './constants/routes';
 import { configureSubscription } from './utils/notifications';
 import useNetwork from './hooks/useNetwork';
 
-const theme = createTheme();
+export const theme = createTheme();
 
 const App = () => {
+  const { t } = useTranslation(['common']);
   const { id } = useSelector(({ player }) => player);
   const isOnline = useNetwork();
 
@@ -29,7 +31,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      {!isOnline && <Error customClassName="fixed" message="You are currently offline" />}
+      {!isOnline && <Error customClassName="fixed" message={t('offline')} />}
 
       <Grid container direction="row" justifyContent="center">
         <BrowserRouter>

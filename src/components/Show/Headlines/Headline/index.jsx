@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ShareIcon from '@mui/icons-material/Share';
-import { colors } from '../../../styles/theme';
+import { colors } from '../../../../styles/theme';
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ const Headline = ({ headline }) => {
   return (
     <Wrapper>
       <div className="poster">
-        <img width="70" height="70" src={image} alt="Headline" />
+        <img data-testid="poster-image" width="70" height="70" src={image} alt="Headline" />
       </div>
 
       <div className="info">
@@ -54,9 +54,17 @@ const Headline = ({ headline }) => {
         <div className="description secondary-text">{description}</div>
       </div>
 
-      <ShareIcon onClick={handleShareClick} type="button" fontSize="medium" sx={{ ml: 2, cursor: 'pointer' }} />
+      <ShareIcon
+        data-testid="share-icon"
+        onClick={handleShareClick}
+        type="button"
+        fontSize="medium"
+        sx={{ ml: 2, cursor: 'pointer' }}
+      />
 
-      <div className="banner">Banner text</div>
+      <div data-testid="banner" className="banner">
+        Banner text
+      </div>
     </Wrapper>
   );
 };
