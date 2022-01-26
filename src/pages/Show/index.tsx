@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { useGetShowsByIdQuery } from '../../store/queries/shows';
@@ -10,7 +10,7 @@ import Episodes from '../../components/Show/Episodes';
 const debounceDelay = 500;
 
 const Show = () => {
-  const { id } = useParams();
+  const { id='' } = useParams();
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data, isLoading } = useGetShowsByIdQuery({
@@ -19,7 +19,7 @@ const Show = () => {
   });
 
   const getDebouncedSearchResult = useCallback(
-    debounce(value => {
+    debounce((value: string) => {
       setSearchQuery(value);
     }, debounceDelay),
     [],
@@ -29,11 +29,11 @@ const Show = () => {
     return <Spinner />;
   }
 
-  const handleSearchChange = inputValue => {
+  const handleSearchChange = (inputValue: string) => {
     getDebouncedSearchResult(inputValue);
   };
 
-  const { verified, mainImage, title, headlines, latest, premium, video } = data || {};
+  const { verified=false, mainImage='', title='', headlines=[], latest=[], premium=[], video=[] } = data || {};
 
   return (
     <div>

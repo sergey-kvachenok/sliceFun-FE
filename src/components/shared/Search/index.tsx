@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { colors, zIndexes } from '../../../styles/theme';
@@ -24,10 +25,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const Search = ({ handleSearchChange }) => {
+type SearchProps = {
+  handleSearchChange: Function
+} 
+
+const Search = ({ handleSearchChange }: SearchProps) => {
   const { t } = useTranslation(['shows']);
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleSearchChange(event.target.value);
   };
 

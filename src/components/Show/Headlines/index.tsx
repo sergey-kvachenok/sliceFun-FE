@@ -1,7 +1,13 @@
+import React from 'react'
 import Headline from './Headline';
 import { ListWrapper } from '../../../styles/containers';
+import {HeadlineType} from '../../../constants/types'
 
-const Headlines = ({ headlines = [] }) => {
+type HeadlineProps = {
+  headlines: HeadlineType[] | undefined
+}
+
+const Headlines = ({ headlines = [] }: HeadlineProps) => {
   const content = headlines.map(headline => <Headline key={headline.title} headline={headline} />);
 
   return <ListWrapper className="margin-top">{content}</ListWrapper>;

@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 type VerifiedProps = {
-  verified: Boolean
+  verified: boolean
 }
 
 const Verified = ({ verified }: VerifiedProps) => {

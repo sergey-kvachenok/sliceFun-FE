@@ -11,6 +11,7 @@ import HeaderBackground from '../../shared/HeaderBackground';
 import { ImageWrapper } from '../../../styles/containers';
 import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 import {RootState} from '../../../store'
+import {IPopularShow} from '../../../constants/interfaces'
 
 const Wrapper = styled.div`
   height: 250px;
@@ -32,7 +33,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const HeadShow = ({ showData }) => {
+type HeadShowProps = {
+showData: IPopularShow
+}
+
+const HeadShow = ({ showData }: HeadShowProps ) => {
   const { t } = useTranslation(['latestShows']);
   const dispatch = useDispatch();
   const navigate = useNavigate();

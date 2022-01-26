@@ -1,40 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {ISingleShow, IPopularShow} from '../../constants/interfaces'
 
-interface ShowsProps {
-    id: String,
-    verified: Boolean,
-    title: String,
-    category: String[],
-    description: String,
-    image: String,
-    date: String,
-    mainImage: String
-}
-
-interface EpisodeProps {
-  title: String,
-  description: String,
-  image: String
-}
-
-interface LatestProps {
-  id: String
-  title: String,
-  date: String,
-  description: String,
-  extendedDescription: String,
-  source: String,
-  image: String
-}
-
-interface SingleShowProps {
-    id: String,
-    verified: Boolean,
-    title: String,
-    mainImage: String,
-    headlines: EpisodeProps[] 
-    latest: LatestProps[],
-    video: LatestProps[]
+type ShowProps = {
+  id: number,
+  search: string
 }
 
 // Define a service using a base URL and expected endpoints
@@ -44,7 +13,7 @@ export const showsApi = createApi({
   tagTypes: ['Shows'],
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SHOWS_BACKEND_URL }),
   endpoints: builder => ({
-    getShows: builder.query<ShowsProps[], string>({
+    getShows: builder.query<IPopularShow[], string>({
       query: args => {
         const { search } = args;
         return {
@@ -53,15 +22,15 @@ export const showsApi = createApi({
         };
       },
       // providedTags: ['Shows'], // helps to refetch data if shows were changed by mutation (currently not useful here)
-      transformResponse: (response: ShowsProps[], meta, arg) => {
+      transformResponse: (response: IPopularShow[], meta, arg) => {
         return response;
       },
     }),
-    getPopularShows: builder.query<ShowsProps[], void>({
+    getPopularShows: builder.query<IPopularShow[], void>({
       query: () => ({ url: `shows/popular` }),
-      transformResponse: (response: ShowsProps[], meta, arg) => response,
+      transformResponse: (response: IPopularShow[], meta, arg) => response,
     }),
-    getLibrary: builder.query<ShowsProps[], {category: String}>({
+    getLibrary: builder.query<IPopularShow[], {category: String}>({
       query: args => {
         const { category } = args;
         return {
@@ -69,11 +38,11 @@ export const showsApi = createApi({
           params: { category },
         };
       },
-      transformResponse: (response: ShowsProps[], meta, arg) => {
+      transformResponse: (response: IPopularShow[], meta, arg) => {
         return response;
       },
     }),
-    getShowsById: builder.query<SingleShowProps[], {id: String, search: String}>({
+    getShowsById: builder.query<ISingleShow, ShowProps>({
       query: args => {
         const { id, search } = args || {};
 
@@ -82,7 +51,7 @@ export const showsApi = createApi({
           params: { search },
         };
       },
-      transformResponse: (response: SingleShowProps[], meta, arg) => response,
+      transformResponse: (response: ISingleShow, meta, arg) => response,
     }),
   }),
 });

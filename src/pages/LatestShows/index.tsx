@@ -6,21 +6,22 @@ import Show from '../../components/shared/Show';
 import Spinner from '../../components/shared/Spinner';
 import { ListWrapper } from '../../styles/containers';
 import { useGetPopularShowsQuery } from '../../store/queries/shows';
+import { IPopularShow } from '../../constants/interfaces'
 
 const LatestShows = () => {
-  const { data, isLoading } = useGetPopularShowsQuery();
+  const { data = [], isLoading } = useGetPopularShowsQuery();
   const { t } = useTranslation(['latestShows']);
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  const firstShow = data[0];
+  const firstShow: IPopularShow = data[0];
   const transformedData = data.slice(1);
 
   return (
     <>
-      <HeadShow showData={firstShow} mainImage={firstShow.mainImage} />
+      <HeadShow showData={firstShow} />
       <ListWrapper>
         <div className="primary-text">{t('latestShowsTitle')}</div>
         <Grid container spacing={4}>

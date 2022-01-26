@@ -1,9 +1,11 @@
+import React from 'react';
 import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { colors } from '../../../styles/theme';
+import {TabType} from '../../../constants/types'
 
-const a11yProps = index => {
+const a11yProps = (index: number) => {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -26,10 +28,15 @@ const defaultStyles = {
   },
 };
 
-const CustomTabs = ({ tabs, customStyles = {} }) => {
+type CustomTabsProps = {
+  tabs: TabType[],
+  customStyles?: object
+}
+
+const CustomTabs = ({ tabs, customStyles = {} }: CustomTabsProps) => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number) => {
     const chosenTabData = tabs[newValue];
     const currentEventHandler = chosenTabData.clickHandler;
     setValue(newValue);

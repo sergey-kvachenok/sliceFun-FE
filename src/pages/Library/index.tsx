@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 import Spinner from '../../components/shared/Spinner';
@@ -6,12 +6,21 @@ import Table from '../../components/shared/Table';
 import Tabs from '../../components/shared/Tabs';
 import { ListWrapper, ImageWrapper } from '../../styles/containers';
 import { useGetLibraryQuery } from '../../store/queries/shows';
+import {Row} from '../../constants/types'
+import {ILibraryShow} from '../../constants/interfaces'
 
-const createData = (...columns) => {
+type RowDataProps = {
+  image: string,
+   title: string,
+    description: string,
+     date: string
+}
+
+const createData = (...columns: React.ReactElement[]) => {
   return columns.reduce((acc, column, index) => ({ ...acc, [`column-${index + 1}`]: column }), {});
 };
 
-const getRows = (data = []) => {
+const getRows = (data: RowDataProps[] | ILibraryShow[] = []) => {
   return data.map(item => {
     const { image, title, description, date } = item;
 
@@ -34,12 +43,7 @@ const getRows = (data = []) => {
   });
 };
 
-const Library = () => {
-  const { t } = useTranslation(['library']);
-  const [activeTab, setActiveTab] = useState('latestUnplayed');
-  const { data, isLoading } = useGetLibraryQuery({ category: activeTab }, { refetchOnReconnect: true });
-
-  const columns = [
+  const getColumns = (t: Function) => ([
     {
       label: t('columns.firstColumn'),
     },
@@ -49,9 +53,9 @@ const Library = () => {
     {
       label: t('columns.thirdColumn'),
     },
-  ];
+  ]);
 
-  const tabs = [
+  const getTabs = (t: Function) => ([
     {
       slug: 'latestUnplayed',
       label: t('tabs.firstTab'),
@@ -68,17 +72,25 @@ const Library = () => {
       slug: 'downloaded',
       label: t('tabs.fourthTab'),
     },
-  ];
+  ])
+
+const Library = () => {
+  const { t } = useTranslation(['library']);
+  const [activeTab, setActiveTab] = useState('latestUnplayed');
+  const { data, isLoading } = useGetLibraryQuery({ category: activeTab }, { refetchOnReconnect: true });
+
+ const columns = getColumns(t)
+  const tabs = getTabs(t)
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  const handleTabChange = slug => {
+  const handleTabChange = (slug: string) => {
     setActiveTab(slug);
   };
 
-  const rows = getRows(data);
+  const rows: Row[] = getRows(data);
   const currentTabs = tabs.map(tab => ({ ...tab, clickHandler: () => handleTabChange(tab.slug) }));
 
   return (

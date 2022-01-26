@@ -12,7 +12,11 @@ const StyledImage = styled.img`
   filter: blur(2px);
 `;
 
-const HeaderBackground = ({ backgroundImageSrc }) => {
+type HeaderBackgroundProps = {
+  backgroundImageSrc: string
+}
+
+const HeaderBackground = ({ backgroundImageSrc}: HeaderBackgroundProps) => {
   return <StyledImage src={backgroundImageSrc || DefaultImage} alt="Show background" />;
 };
 

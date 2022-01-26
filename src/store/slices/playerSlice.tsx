@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type PlayerProps = {
-  id: String | null,
-  isPlaying: Boolean,
-  title: String,
-  audioSrc: String | null,
-  imageSrc: String | null,
-  duration: Number,
-  currentTime: Number
+  id: string | null,
+  isPlaying: boolean,
+  title: string,
+  audioSrc: string | null,
+  imageSrc: string | null,
+  duration?: Number,
+  currentTime?: Number
 }
 
 

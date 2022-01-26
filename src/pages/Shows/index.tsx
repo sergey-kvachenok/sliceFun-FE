@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import debounce from 'lodash.debounce';
@@ -26,7 +27,7 @@ const Shows = () => {
     return <Spinner />;
   }
 
-  const handleSearchChange = inputValue => {
+  const handleSearchChange = (inputValue: string) => {
     getDebouncedSearchResult(inputValue);
   };
 

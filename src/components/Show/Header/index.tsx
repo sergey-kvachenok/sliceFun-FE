@@ -30,7 +30,14 @@ const Panel = styled.div`
   justify-content: space-between;
 `;
 
-const Header = ({ mainImage, title, verified, handleSearchChange }) => {
+type HeaderProps = {
+  mainImage: string,
+  title: string,
+  verified: boolean,
+  handleSearchChange: Function
+}
+
+const Header = ({ mainImage, title, verified, handleSearchChange }: HeaderProps) => {
   const { t } = useTranslation(['common']);
 
   return (
@@ -41,8 +48,9 @@ const Header = ({ mainImage, title, verified, handleSearchChange }) => {
         <Search handleSearchChange={handleSearchChange} />
 
         <div className="buttons">
-          <Button variant="outlined" title={t('manageSubscriptions')} customStyles={{ mr: 2 }} />
-          <Button variant="outlined" title={t('share')} />
+          <Button variant="outlined" title={t('manageSubscriptions')} customStyles={{ mr: 2 }} onClick={() => {}} />
+          
+          <Button variant="outlined" title={t('share')} onClick={() => {}}/>
         </div>
       </Panel>
 

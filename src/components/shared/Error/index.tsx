@@ -12,15 +12,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 type ErrorProps = {
-  message: String,
-  customClassName: String
+  message: string,
+  customClassName?: string
 }
 
 const Error = ({ message, customClassName }: ErrorProps) => {
   const classes = useStyles();
 
   return (
-    <Alert className={classes[customClassName]} severity="error">
+    <Alert className={customClassName ? classes[customClassName] : ''} severity="error">
       {message}
     </Alert>
   );

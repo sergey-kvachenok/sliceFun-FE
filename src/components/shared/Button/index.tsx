@@ -1,3 +1,4 @@
+import React from 'react'
 import Button from '@mui/material/Button';
 import { colors } from '../../../styles/theme';
 
@@ -24,9 +25,9 @@ const defaultStyles = {
 };
 
 type CustomButtonProps = {
-  title: String,
-  variant: String,
-  customStyles: Object,
+  title: string,
+  variant: 'text' | 'outlined' |'contained' | undefined,
+  customStyles?: object,
   onClick: Function
 }
 
