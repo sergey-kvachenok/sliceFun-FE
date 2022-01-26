@@ -40,6 +40,7 @@ const CustomTabs = ({ tabs, customStyles = {} }) => {
     <Tabs sx={{ ...defaultStyles, ...customStyles }} value={value} onChange={handleChange} aria-label="Menu tabs">
       {tabs.map(({ label }, index) => (
         <Tab
+          data-testid="menu-tabs"
           key={label}
           sx={{ textTransform: 'capitalize', color: colors.darkBlue1, border: '2px solid white' }}
           label={label}

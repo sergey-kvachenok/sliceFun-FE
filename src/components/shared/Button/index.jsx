@@ -23,10 +23,10 @@ const defaultStyles = {
   },
 };
 
-const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {}, testId = 'custom-button' }) => {
+const CustomButton = ({ title, variant, dataTestId = 'custom-button', customStyles = {}, onClick = () => {} }) => {
   return (
     <Button
-      data-testid={testId}
+      data-testid={dataTestId}
       variant={variant}
       sx={{ ...defaultStyles, ...customStyles }}
       size="small"

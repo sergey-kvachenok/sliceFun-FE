@@ -66,13 +66,17 @@ const SideBar = () => {
 
       <ListItem sx={{ mt: 1 }}>
         <IconButton
-          data-testid="ru-lang"
+          data-testid="rus-flag-button"
           sx={{ backgroundColor: 'grey.200', mr: 3 }}
           onClick={() => changeLanguage('ru')}
         >
           <RuFlag />
         </IconButton>
-        <IconButton sx={{ backgroundColor: 'grey.200' }} onClick={() => changeLanguage('en')}>
+        <IconButton
+          data-testid="en-flag-button"
+          sx={{ backgroundColor: 'grey.200' }}
+          onClick={() => changeLanguage('en')}
+        >
           <UsFlag />
         </IconButton>
       </ListItem>

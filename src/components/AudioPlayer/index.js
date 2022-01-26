@@ -103,7 +103,13 @@ const AudioPlayer = () => {
       </AudioInfo>
 
       <AudioPlayerWrapper>
-        <audio ref={audioPlayer} onEnded={handleEndEvent} src={audioSrc} preload="metadata"></audio>
+        <audio
+          data-testid="player"
+          ref={audioPlayer}
+          onEnded={handleEndEvent}
+          src={audioSrc}
+          preload="metadata"
+        ></audio>
 
         <button data-testid="shift-back-button" className="forwardBackward" onClick={backTimeshift}>
           <ArrowBackOutlinedIcon fontSize="small" /> {shiftTime}

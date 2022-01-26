@@ -6,7 +6,7 @@ import Verified from '../../shared/Verified';
 import { StyledLink } from '../../../styles/containers';
 import Typography from '@mui/material/Typography';
 
-const Show = ({ show }) => {
+const Show = ({ show, dataTestId = '' }) => {
   const { title, image, id, verified } = show || {};
 
   return (
@@ -21,6 +21,7 @@ const Show = ({ show }) => {
           width: { xs: '80%', sm: '100%' },
           margin: { xs: '0 auto', sm: 'auto' },
         }}
+        data-testid={dataTestId}
       >
         <CardMedia component="img" image={image} alt={title} sx={{ height: 200 }} />
 

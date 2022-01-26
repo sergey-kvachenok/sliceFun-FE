@@ -45,8 +45,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --verbose --coverage",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "deploy": "react-scripts build && sls deploy"
+    "format": "prettier --write \"src/**/*.{js,jsx}\" && prettier --write \"cypress/integration/*.spec.js\"",
+    "deploy": "react-scripts build && sls deploy",
+    "cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -70,6 +71,8 @@
     "styled-components": "^5"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "cypress": "^9.3.1",
     "dotenv": "^14.2.0",
     "prettier": "2.5.1",
     "serve": "^13.0.2",
