@@ -4,5 +4,6 @@
   "manageSubscriptions": "Manage subscription",
   "addPlaylist": "Add to playlist",
   "expandMore": "Expand More",
-  "loadMore": "Load More"
+  "loadMore": "Load More",
+  "offline": "You are currently offline"
 }

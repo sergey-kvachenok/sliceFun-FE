@@ -31,7 +31,7 @@ const Search = ({ handleSearchChange }) => {
     handleSearchChange(event.target.value);
   };
 
-  return <StyledInput placeholder={t('search')} onChange={handleChange} />;
+  return <StyledInput data-testid="search-input" placeholder={t('search')} onChange={handleChange} />;
 };
 
 export default Search;

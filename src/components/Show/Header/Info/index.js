@@ -18,7 +18,7 @@ const Info = ({ imageSrc, title, verified }) => {
     <Wrapper>
       <div className="content-container">
         <ImageWrapper height={120} width={120}>
-          <img height="120" width="120" src={imageSrc} alt="Podcast poster" />
+          <img data-testid="podcast-image" height="120" width="120" src={imageSrc} alt="Podcast poster" />
         </ImageWrapper>
 
         <div>

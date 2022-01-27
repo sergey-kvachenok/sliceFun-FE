@@ -5,10 +5,10 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import { setCurrentTime, setIsPlaying, setDuration } from '../../store/slices/playerSlice';
-import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper, PlayerContent } from './AudioPlayer.styles';
+import { AudioPlayerWrapper, ProgressBar, AudioInfo, Wrapper } from './AudioPlayer.styles';
 import { ImageWrapper } from '../../styles/containers';
 
-const shiftTime = 15;
+export const shiftTime = 15;
 
 const calculateTime = secs => {
   const minutes = Math.floor(secs / 60);
@@ -24,7 +24,7 @@ const getProgressBarBeforeWidth = (currentProgress, duration) => {
   return beforeWidth;
 };
 
-const AudioPlayer = ({ audio, image }) => {
+const AudioPlayer = () => {
   const dispatch = useDispatch();
   const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }) => player);
 
@@ -64,7 +64,6 @@ const AudioPlayer = ({ audio, image }) => {
   }, [handlePlayPause]);
 
   const togglePlayPause = () => {
-    // const prevValue = isPlaying;
     dispatch(setIsPlaying(!isPlaying));
     handlePlayPause(isPlaying);
   };
@@ -95,7 +94,7 @@ const AudioPlayer = ({ audio, image }) => {
     <Wrapper>
       <AudioInfo>
         <ImageWrapper height={50} width={50}>
-          <img src={imageSrc} height="50" width="50" alt="Current audio track poster" />
+          <img data-testid="player-image" src={imageSrc} height="50" width="50" alt="Current audio track poster" />
         </ImageWrapper>
         <div>
           <p className="title text">{title}</p>
@@ -106,23 +105,27 @@ const AudioPlayer = ({ audio, image }) => {
       <AudioPlayerWrapper>
         <audio ref={audioPlayer} onEnded={handleEndEvent} src={audioSrc} preload="metadata"></audio>
 
-        <button className="forwardBackward" onClick={backTimeshift}>
+        <button data-testid="shift-back-button" className="forwardBackward" onClick={backTimeshift}>
           <ArrowBackOutlinedIcon fontSize="small" /> {shiftTime}
         </button>
 
-        <button onClick={togglePlayPause} className="playPause">
+        {/* play/pause */}
+        <button data-testid="play-pause-button" onClick={togglePlayPause} className="playPause">
           {isPlaying ? <PauseRoundedIcon fontSize="large" /> : <PlayArrowRoundedIcon fontSize="large" />}
         </button>
 
-        <button className="forwardBackward" onClick={forwardTimeshift}>
+        <button data-testid="shift-forward-button" className="forwardBackward" onClick={forwardTimeshift}>
           {shiftTime} <ArrowForwardOutlinedIcon fontSize="small" />
         </button>
 
         {/* current time */}
-        <div className="currentTime xs-hidden">{calculateTime(currentTime)}</div>
+        <div data-testid="current-time" className="currentTime xs-hidden">
+          {calculateTime(currentTime)}
+        </div>
 
         {/* progress bar */}
         <ProgressBar
+          data-testid="progress-bar"
           className="xs-hidden"
           beforeWidth={getProgressBarBeforeWidth(progressBar.current?.value, duration)}
           ref={progressBar}

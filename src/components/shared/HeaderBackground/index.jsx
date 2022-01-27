@@ -13,7 +13,7 @@ const StyledImage = styled.img`
 `;
 
 const HeaderBackground = ({ backgroundImageSrc }) => {
-  return <StyledImage src={backgroundImageSrc || DefaultImage} alt="Show background" />;
+  return <StyledImage data-testid="background-image" src={backgroundImageSrc || DefaultImage} alt="Show background" />;
 };
 
 export default HeaderBackground;
