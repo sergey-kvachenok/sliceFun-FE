@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
@@ -8,6 +8,7 @@ import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutli
 import Button from '../../shared/Button';
 import { setPlayerInfo, setIsPlaying } from '../../../store/slices/playerSlice';
 import { RootState } from '../../../store';
+import { ILatestShow } from '../../../constants/interfaces';
 
 const Wrapper = styled.div`
   align-items: baseline;
@@ -45,13 +46,17 @@ const Wrapper = styled.div`
   }
 `;
 
-const Episode = ({ episode }) => {
+type EpisodeProps = {
+  episode: ILatestShow;
+};
+
+const Episode = ({ episode }: EpisodeProps) => {
   const { t } = useTranslation(['common']);
   const dispatch = useDispatch();
   const { isPlaying, id } = useSelector(({ player }: RootState) => player);
 
-  const [currentEpisodeId, setCurrentEpisodeId] = useState(null);
-  const [isExpanded, setExpanded] = useState(false);
+  const [currentEpisodeId, setCurrentEpisodeId] = useState<string | null>(null);
+  const [isExpanded, setExpanded] = useState<boolean>(false);
 
   const { id: episodeId, date, title, description, extendedDescription, source, image } = episode || {};
 
@@ -61,7 +66,7 @@ const Episode = ({ episode }) => {
     setExpanded(prevValue => !prevValue);
   };
 
-  const toglePlayPause = id => {
+  const toglePlayPause = (id: string | null) => {
     const params = {
       id: episodeId,
       isPlaying: !isPlaying,

@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import ShareIcon from '@mui/icons-material/Share';
 import { colors } from '../../../styles/theme';
+import { HeadlineType } from '../../../constants/types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,7 +38,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Headline = ({ headline }) => {
+type HeadlineProps = {
+  headline: HeadlineType;
+};
+
+const Headline = ({ headline }: HeadlineProps) => {
   const { image, title, description } = headline || {};
 
   const handleShareClick = () => {

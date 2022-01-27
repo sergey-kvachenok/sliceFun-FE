@@ -34,7 +34,7 @@ type HeaderProps = {
   mainImage: string;
   title: string;
   verified: boolean;
-  handleSearchChange: Function;
+  handleSearchChange: () => void;
 };
 
 const Header = ({ mainImage, title, verified, handleSearchChange }: HeaderProps) => {

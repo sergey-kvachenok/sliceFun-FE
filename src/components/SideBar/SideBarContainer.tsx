@@ -13,22 +13,31 @@ const SideBarContainer = () => {
     dispatch(toggleIsMobileSidebarActive());
   };
 
+  const styles = {
+    drawer: {
+      display: {
+        xs: 'none',
+        sm: 'block',
+      },
+      '& .MuiPaper-root': {
+        position: 'initial',
+        borderRight: 'none'
+      }
+    },
+  };
+
   return (
     <>
       <Drawer
         variant="temporary"
-        open={isMobileSidebarActive}
+        open={!!isMobileSidebarActive}
         onClose={handleMobileSidebarToggle}
         ModalProps={{ keepMounted: true }}
         sx={{ display: { xs: 'block', sm: 'none' } }}
       >
         <SideBar />
       </Drawer>
-      <Drawer
-        variant="permanent"
-        sx={{ display: { xs: 'none', sm: 'block', '& .MuiPaper-root': { position: 'initial', borderRight: 'none' } } }}
-        open
-      >
+      <Drawer variant="permanent" sx={styles.drawer} open>
         <SideBar />
       </Drawer>
     </>

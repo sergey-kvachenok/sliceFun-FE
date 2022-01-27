@@ -26,7 +26,7 @@ const StyledInput = styled.input`
 `;
 
 type SearchProps = {
-  handleSearchChange: Function;
+  handleSearchChange: (value: string) => void;
 };
 
 const Search = ({ handleSearchChange }: SearchProps) => {

@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { colors } from '../../../styles/theme';
 
 const defaultStyles = {
-  textTransform: 'capitalize',
+  textTransform: 'capitalize' as const,
   transition: '0.6s',
 
   '&, &:focus': {
@@ -26,9 +26,9 @@ const defaultStyles = {
 
 type CustomButtonProps = {
   title: string;
-  variant: 'text' | 'outlined' | 'contained' | undefined;
+  variant?: 'text' | 'outlined' | 'contained' | undefined;
   customStyles?: object;
-  onClick: Function;
+  onClick?: () => void;
 };
 
 const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {} }: CustomButtonProps) => {

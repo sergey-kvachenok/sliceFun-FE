@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import Button from '../../../shared/Button';
@@ -11,7 +12,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Info = ({ imageSrc, title, verified }) => {
+type InfoProps = {
+  imageSrc: string;
+  title: string;
+  verified: boolean;
+};
+
+const Info = ({ imageSrc, title, verified }: InfoProps) => {
   const { t } = useTranslation(['common']);
 
   return (
