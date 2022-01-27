@@ -9,6 +9,6 @@ export const getData = async (endpoint) => {
 
 export const testTabs = () => {
   cy.get('[data-testid="menu-tabs"]').each(tab => {
-      cy.wrap(tab).click().should('have.class', 'Mui-selected');
+      cy.wrap(tab).click({force: true}).should('have.class', 'Mui-selected');
     });
 };

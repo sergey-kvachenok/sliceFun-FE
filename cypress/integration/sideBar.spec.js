@@ -23,7 +23,7 @@ describe('Test Side Bar', () => {
   it(`side bar's nav button must redirect to different page`, () => {
     cy.visit('/');
     sideBarPages.forEach(page => {
-      cy.get(getSideBarLinkSelector(page)).first().click();
+      cy.get(getSideBarLinkSelector(page)).first().click({force: true});
       cy.location('pathname').should('eq', `${page}`);
     });
   });
@@ -31,7 +31,7 @@ describe('Test Side Bar', () => {
   it('flag buttons must change language of static data', () => {
     cy.visit('/');
     flagsButtons.forEach(flag => {
-      cy.get(flag.selector).first().click();
+      cy.get(flag.selector).first().click({force: true});
       cy.findByText(flag.text).should('exist');
     });
   });

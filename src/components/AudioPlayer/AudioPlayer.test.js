@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import renderWithProviders from '../../utils/test';
 import AudioPlayer, { shiftTime } from '.';
 
@@ -31,17 +31,17 @@ describe('Audio Player', () => {
   });
 
   it('should render main ui elements', async () => {
-    const { getByTestId, getByText } = renderWithProviders(<AudioPlayer />);
+    renderWithProviders(<AudioPlayer />);
 
     const durationInMinutes = '12:30';
 
-    const title = getByText(state.player.title);
-    const duration = getByText(`Duration: ${durationInMinutes}`);
-    const shiftBackButton = getByTestId('shift-back-button');
-    const shiftForwardButton = getByTestId('shift-forward-button');
-    const playPauseButton = getByTestId('play-pause-button');
-    const currentTime = getByTestId('current-time');
-    const progressBar = getByTestId('progress-bar');
+    const title = screen.getByText(state.player.title);
+    const duration = screen.getByText(`Duration: ${durationInMinutes}`);
+    const shiftBackButton = screen.getByTestId('shift-back-button');
+    const shiftForwardButton = screen.getByTestId('shift-forward-button');
+    const playPauseButton = screen.getByTestId('play-pause-button');
+    const currentTime = screen.getByTestId('current-time');
+    const progressBar = screen.getByTestId('progress-bar');
 
     expect(title).toBeVisible();
     expect(duration).toBeVisible();
@@ -53,14 +53,14 @@ describe('Audio Player', () => {
   });
 
   it('should allow to toggle play/pause', () => {
-    const { getByTestId } = renderWithProviders(<AudioPlayer />);
+    renderWithProviders(<AudioPlayer />);
 
     const dispatchData = {
       payload: true,
       type: 'player/setIsPlaying',
     };
 
-    const playPauseButton = getByTestId('play-pause-button');
+    const playPauseButton = screen.getByTestId('play-pause-button');
 
     fireEvent.click(playPauseButton);
 
@@ -68,14 +68,14 @@ describe('Audio Player', () => {
   });
 
   it('should allow to jump forward', () => {
-    const { getByTestId } = renderWithProviders(<AudioPlayer />);
+    renderWithProviders(<AudioPlayer />);
 
     const dispatchData = {
       payload: shiftTime,
       type: 'player/setCurrentTime',
     };
 
-    const shiftForwardButton = getByTestId('shift-forward-button');
+    const shiftForwardButton = screen.getByTestId('shift-forward-button');
 
     fireEvent.click(shiftForwardButton);
 
@@ -83,9 +83,9 @@ describe('Audio Player', () => {
   });
 
   it('should allow to jump backward', () => {
-    const { getByTestId } = renderWithProviders(<AudioPlayer />);
+    renderWithProviders(<AudioPlayer />);
 
-    const shiftBackButton = getByTestId('shift-back-button');
+    const shiftBackButton = screen.getByTestId('shift-back-button');
 
     fireEvent.click(shiftBackButton);
 
@@ -105,9 +105,9 @@ describe('Audio Player', () => {
       type: 'player/setIsPlaying',
     };
 
-    const { getByTestId } = renderWithProviders(<AudioPlayer />);
+    renderWithProviders(<AudioPlayer />);
 
-    const pauseButton = getByTestId('play-pause-button');
+    const pauseButton = screen.getByTestId('play-pause-button');
     expect(pauseButton).toBeInTheDocument();
 
     fireEvent.click(pauseButton);

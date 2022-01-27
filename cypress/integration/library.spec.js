@@ -24,7 +24,7 @@ describe('Test Library', () => {
 
   it('click on menu tabs must show current shows', () => {
     cy.get(menuTabsSelector).each((tab, index) => {
-      cy.wrap(tab).click();
+      cy.wrap(tab).click({force: true});
       cy.get(tableShowsSelector).should('have.length', shows[index].length);
     });
   });

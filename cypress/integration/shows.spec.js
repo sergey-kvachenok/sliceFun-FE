@@ -27,7 +27,7 @@ describe('Test Shows', () => {
 
   it('search input must find valid show', () => {
     cy.visit('/shows');
-    cy.get('input').type(firstShow.title);
+    cy.get('input').type(firstShow.title, {force: true});
     cy.get(searchedShowsSelector).should('have.length', 1);
   });
 
@@ -39,13 +39,13 @@ describe('Test Shows', () => {
   it('link to show must change when clicked play on different show', () => {
     cy.visit(`/shows/${firstShow.id}`);
 
-    cy.get(`${latestEpisodesSelector} .play-pause-button`).first().click();
+    cy.get(`${latestEpisodesSelector} .play-pause-button`).first().click({force: true});
 
     cy.get(playerSelector).should('have.attr', 'src', `${firstShowByIdData.latest[0].source}`).as('getNotes');
 
     cy.wait(waitTime);
 
-    cy.get(`${latestEpisodesSelector} .play-pause-button`).last().click();
+    cy.get(`${latestEpisodesSelector} .play-pause-button`).last().click({force: true});
 
     cy.get(playerSelector).should(
       'have.attr',
@@ -55,6 +55,6 @@ describe('Test Shows', () => {
 
     // stop the audio
     cy.wait(waitTime);
-    cy.get(`${latestEpisodesSelector} .play-pause-button`).last().click();
+    cy.get(`${latestEpisodesSelector} .play-pause-button`).last().click({force: true});
   });
 });

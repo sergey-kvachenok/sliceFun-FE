@@ -31,13 +31,13 @@ describe('Test Latest Shows', () => {
 
   it('head show play icon must open player', () => {
     cy.visit('/');
-    cy.get(headShowPlayIconSelector).click();
+    cy.get(headShowPlayIconSelector).click({force: true});
     cy.get(playerSelector).should('exist');
   });
 
   it('move to show page on head show button click', () => {
     cy.visit('/');
-    cy.get(headShowGoToShowButtonSelector).click();
+    cy.get(headShowGoToShowButtonSelector).click({force: true});
     cy.url().should('include', `/shows/${firstShow.id}`);
   });
 });

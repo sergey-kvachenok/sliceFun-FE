@@ -1,4 +1,4 @@
-import { fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import renderWithProviders from '../../utils/test';
 import sidebarEn from '../../translations/en/sideBar.json';
 import sidebarRu from '../../translations/ru/sideBar.json';
@@ -7,27 +7,27 @@ import SideBar from '.';
 
 describe('SideBar', () => {
   it('should render all routes', async () => {
-    const { getByText } = renderWithProviders(<SideBar />);
+    renderWithProviders(<SideBar />);
 
     sideBarButtons.forEach(({ name }) => {
-      const label = getByText(sidebarEn[name]);
+      const label = screen.getByText(sidebarEn[name]);
       expect(label).toBeVisible();
     });
   });
 
   it('should allow to change the language', async () => {
-    const { findByTestId, getByText, queryByText } = renderWithProviders(<SideBar />);
+    renderWithProviders(<SideBar />);
 
-    const latestLinkLabel = getByText(sidebarEn.latest);
-    const invisibleRuLabel = queryByText(sidebarRu.latest);
+    const latestLinkLabel = screen.getByText(sidebarEn.latest);
+    const invisibleRuLabel = screen.queryByText(sidebarRu.latest);
 
     expect(latestLinkLabel).toBeVisible();
     expect(invisibleRuLabel).not.toBeInTheDocument();
 
-    const ruButton = await findByTestId('rus-flag-button');
+    const ruButton = await screen.findByTestId('rus-flag-button');
     fireEvent.click(ruButton);
 
-    const visibleRuLabel = getByText(sidebarRu.latest);
+    const visibleRuLabel = screen.getByText(sidebarRu.latest);
 
     expect(visibleRuLabel).toBeVisible();
   });

@@ -1,3 +1,4 @@
+import { screen } from '@testing-library/react';
 import renderWithProviders from '../../../../utils/test';
 import Headline from '.';
 
@@ -9,13 +10,13 @@ const headline = {
 
 describe('Headline', () => {
   it('should render all elements', () => {
-    const { getByTestId, getByText } = renderWithProviders(<Headline headline={headline} />);
+    renderWithProviders(<Headline headline={headline} />);
 
-    const title = getByText(headline.title);
-    const description = getByText(headline.description);
-    const banner = getByTestId('banner');
-    const shareIcon = getByTestId('share-icon');
-    const posterImage = getByTestId('poster-image');
+    const title = screen.getByText(headline.title);
+    const description = screen.getByText(headline.description);
+    const banner = screen.getByTestId('banner');
+    const shareIcon = screen.getByTestId('share-icon');
+    const posterImage = screen.getByTestId('head-show-image');
 
     expect(title).toBeVisible();
     expect(description).toBeVisible();
