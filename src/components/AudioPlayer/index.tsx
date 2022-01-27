@@ -11,7 +11,7 @@ import { RootState } from '../../store';
 
 const shiftTime = 15;
 
-const calculateTime = secs => {
+const calculateTime = (secs: number) => {
   const minutes = Math.floor(secs / 60);
   const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
   const seconds = Math.floor(secs % 60);
@@ -27,12 +27,14 @@ const getProgressBarBeforeWidth = (currentProgress, duration) => {
 
 const AudioPlayer = () => {
   const dispatch = useDispatch();
-  const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(({ player }: RootState) => player);
+  const { isPlaying, id, title, imageSrc, audioSrc, duration, currentTime } = useSelector(
+    ({ player }: RootState) => player,
+  );
 
   // references
   const audioPlayer = useRef(); // reference our audio component
   const progressBar = useRef(); // reference our progress bar
-  const animationRef = useRef(); // reference the animation
+  const animationRef = useRef<number>(); // reference the animation
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current?.duration);
@@ -56,7 +58,9 @@ const AudioPlayer = () => {
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioPlayer.current?.pause();
-      cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     }
   }, [whilePlaying, isPlaying, id]); // id for changing episodes
 

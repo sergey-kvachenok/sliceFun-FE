@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { colors } from '../../../styles/theme';
-import {TabType} from '../../../constants/types'
+import { TabType } from '../../../constants/types';
 
 const a11yProps = (index: number) => {
   return {
@@ -29,9 +29,9 @@ const defaultStyles = {
 };
 
 type CustomTabsProps = {
-  tabs: TabType[],
-  customStyles?: object
-}
+  tabs: TabType[];
+  customStyles?: object;
+};
 
 const CustomTabs = ({ tabs, customStyles = {} }: CustomTabsProps) => {
   const [value, setValue] = useState(0);

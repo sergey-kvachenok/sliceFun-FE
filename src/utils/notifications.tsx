@@ -2,7 +2,7 @@ const configureOptions = (message: string): NotificationOptions => ({
   body: message,
   icon: '/icon-96x96.png',
   image: '/icon-192x192.png',
-  dir: "rtl",
+  dir: 'rtl',
   lang: 'en-US',
   badge: '/icon-96x96.png',
   vibrate: [200, 100, 200],

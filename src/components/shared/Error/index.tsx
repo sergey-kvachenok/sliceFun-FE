@@ -12,9 +12,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 type ErrorProps = {
-  message: string,
-  customClassName?: string
-}
+  message: string;
+  customClassName?: string;
+};
 
 const Error = ({ message, customClassName }: ErrorProps) => {
   const classes = useStyles();

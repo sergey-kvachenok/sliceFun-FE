@@ -13,7 +13,7 @@ import SideBarBurgerButton from './components/shared/SideBarBurgerButton';
 import { routes } from './constants/routes';
 import { configureSubscription } from './utils/notifications';
 import useNetwork from './hooks/useNetwork';
-import {RootState} from './store'
+import { RootState } from './store';
 
 const theme = createTheme();
 
@@ -40,11 +40,7 @@ const App = () => {
               <SideBarBurgerButton />
             </Grid>
 
-            <Grid
-             sx={{ padding: 0}}
-             item
-              xs={12} sm={8} md={9} ld={10}
-             >
+            <Grid sx={{ padding: 0 }} item xs={12} sm={8} md={9} ld={10}>
               <Routes>
                 {routes.map(({ path, component }) => {
                   const RouteComponent = component;

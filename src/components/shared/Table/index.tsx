@@ -6,12 +6,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {ColumnType, Row} from '../../../constants/types'
+import { ColumnType, Row } from '../../../constants/types';
 
 type CustomTableProps = {
-  rows: Row[],
-  columns: ColumnType[]
-}
+  rows: Row[];
+  columns: ColumnType[];
+};
 
 const CustomTable = ({ rows = [], columns = [] }: CustomTableProps) => {
   return (

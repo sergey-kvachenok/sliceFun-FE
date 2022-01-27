@@ -13,10 +13,10 @@ const StyledImage = styled.img`
 `;
 
 type HeaderBackgroundProps = {
-  backgroundImageSrc: string
-}
+  backgroundImageSrc: string;
+};
 
-const HeaderBackground = ({ backgroundImageSrc}: HeaderBackgroundProps) => {
+const HeaderBackground = ({ backgroundImageSrc }: HeaderBackgroundProps) => {
   return <StyledImage src={backgroundImageSrc || DefaultImage} alt="Show background" />;
 };
 

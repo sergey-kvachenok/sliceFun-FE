@@ -6,7 +6,7 @@ import Show from '../../components/shared/Show';
 import Spinner from '../../components/shared/Spinner';
 import { ListWrapper } from '../../styles/containers';
 import { useGetPopularShowsQuery } from '../../store/queries/shows';
-import { IPopularShow } from '../../constants/interfaces'
+import { IPopularShow } from '../../constants/interfaces';
 
 const LatestShows = () => {
   const { data = [], isLoading } = useGetPopularShowsQuery();

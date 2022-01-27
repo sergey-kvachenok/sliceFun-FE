@@ -1,22 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type PlayerProps = {
-  id: string | null,
-  isPlaying: boolean,
-  title: string,
-  audioSrc: string | null,
-  imageSrc: string | null,
-  duration?: Number,
-  currentTime?: Number
-}
-
+  id: string | null;
+  isPlaying: boolean;
+  title: string;
+  audioSrc: string | undefined;
+  imageSrc: string | undefined;
+  duration?: Number;
+  currentTime?: Number;
+};
 
 const initialState: PlayerProps = {
   id: null,
   isPlaying: false,
   title: '',
-  audioSrc: null,
-  imageSrc: null,
+  audioSrc: undefined,
+  imageSrc: undefined,
   duration: 0,
   currentTime: 0,
 };
@@ -37,10 +36,10 @@ export const playerSlice = createSlice({
     setIsPlaying: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
     },
-    setDuration: (state, action:  PayloadAction<number>) => {
+    setDuration: (state, action: PayloadAction<number>) => {
       state.duration = action.payload;
     },
-    setCurrentTime: (state, action:  PayloadAction<number>) => {
+    setCurrentTime: (state, action: PayloadAction<number>) => {
       state.currentTime = action.payload;
     },
   },

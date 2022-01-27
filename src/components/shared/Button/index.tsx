@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from '@mui/material/Button';
 import { colors } from '../../../styles/theme';
 
@@ -25,19 +25,15 @@ const defaultStyles = {
 };
 
 type CustomButtonProps = {
-  title: string,
-  variant: 'text' | 'outlined' |'contained' | undefined,
-  customStyles?: object,
-  onClick: Function
-}
+  title: string;
+  variant: 'text' | 'outlined' | 'contained' | undefined;
+  customStyles?: object;
+  onClick: Function;
+};
 
 const CustomButton = ({ title, variant, customStyles = {}, onClick = () => {} }: CustomButtonProps) => {
   return (
-    <Button 
-    variant={variant}
-     sx={{ ...defaultStyles, ...customStyles }}
-      size="small"
-       onClick={onClick}>
+    <Button variant={variant} sx={{ ...defaultStyles, ...customStyles }} size="small" onClick={onClick}>
       {title}
     </Button>
   );

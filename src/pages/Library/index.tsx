@@ -6,15 +6,15 @@ import Table from '../../components/shared/Table';
 import Tabs from '../../components/shared/Tabs';
 import { ListWrapper, ImageWrapper } from '../../styles/containers';
 import { useGetLibraryQuery } from '../../store/queries/shows';
-import {Row} from '../../constants/types'
-import {ILibraryShow} from '../../constants/interfaces'
+import { Row } from '../../constants/types';
+import { ILibraryShow } from '../../constants/interfaces';
 
 type RowDataProps = {
-  image: string,
-   title: string,
-    description: string,
-     date: string
-}
+  image: string;
+  title: string;
+  description: string;
+  date: string;
+};
 
 const createData = (...columns: React.ReactElement[]) => {
   return columns.reduce((acc, column, index) => ({ ...acc, [`column-${index + 1}`]: column }), {});
@@ -43,44 +43,44 @@ const getRows = (data: RowDataProps[] | ILibraryShow[] = []) => {
   });
 };
 
-  const getColumns = (t: Function) => ([
-    {
-      label: t('columns.firstColumn'),
-    },
-    {
-      label: t('columns.secondColumn'),
-    },
-    {
-      label: t('columns.thirdColumn'),
-    },
-  ]);
+const getColumns = (t: Function) => [
+  {
+    label: t('columns.firstColumn'),
+  },
+  {
+    label: t('columns.secondColumn'),
+  },
+  {
+    label: t('columns.thirdColumn'),
+  },
+];
 
-  const getTabs = (t: Function) => ([
-    {
-      slug: 'latestUnplayed',
-      label: t('tabs.firstTab'),
-    },
-    {
-      slug: 'all',
-      label: t('tabs.secondTab'),
-    },
-    {
-      slug: 'purchased',
-      label: t('tabs.thirdTab'),
-    },
-    {
-      slug: 'downloaded',
-      label: t('tabs.fourthTab'),
-    },
-  ])
+const getTabs = (t: Function) => [
+  {
+    slug: 'latestUnplayed',
+    label: t('tabs.firstTab'),
+  },
+  {
+    slug: 'all',
+    label: t('tabs.secondTab'),
+  },
+  {
+    slug: 'purchased',
+    label: t('tabs.thirdTab'),
+  },
+  {
+    slug: 'downloaded',
+    label: t('tabs.fourthTab'),
+  },
+];
 
 const Library = () => {
   const { t } = useTranslation(['library']);
   const [activeTab, setActiveTab] = useState('latestUnplayed');
   const { data, isLoading } = useGetLibraryQuery({ category: activeTab }, { refetchOnReconnect: true });
 
- const columns = getColumns(t)
-  const tabs = getTabs(t)
+  const columns = getColumns(t);
+  const tabs = getTabs(t);
 
   if (isLoading) {
     return <Spinner />;

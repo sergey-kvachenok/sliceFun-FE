@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import { colors } from '../../../styles/theme';
-import {IVideo} from '../../../constants/interfaces'
+import { IVideo } from '../../../constants/interfaces';
 
 const Wrapper = styled.div`
   align-items: baseline;
@@ -37,8 +37,8 @@ const Wrapper = styled.div`
 `;
 
 type VideoEpisodeProps = {
-  episode: IVideo
-}
+  episode: IVideo;
+};
 
 const VideoEpisode = ({ episode }: VideoEpisodeProps) => {
   const { date, title, description, image } = episode || {};

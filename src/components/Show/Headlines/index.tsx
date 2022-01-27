@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import Headline from './Headline';
 import { ListWrapper } from '../../../styles/containers';
-import {HeadlineType} from '../../../constants/types'
+import { HeadlineType } from '../../../constants/types';
 
 type HeadlineProps = {
-  headlines: HeadlineType[] | undefined
-}
+  headlines: HeadlineType[] | undefined;
+};
 
 const Headlines = ({ headlines = [] }: HeadlineProps) => {
   const content = headlines.map(headline => <Headline key={headline.title} headline={headline} />);

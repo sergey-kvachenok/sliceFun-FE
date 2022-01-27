@@ -1,4 +1,4 @@
 export type ImageProps = {
-  height: Number,
-  width: Number
-}
+  height: Number;
+  width: Number;
+};

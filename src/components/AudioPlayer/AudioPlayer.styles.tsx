@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/theme';
+import { ProgressBarStyle } from './types';
 
 export const Wrapper = styled.div`
   color: ${colors.white};
@@ -110,7 +111,7 @@ export const ProgressBar = styled.input.attrs({ type: 'range', defaultValue: 0 }
     height: 11px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    width: ${props => `${props.beforeWidth}%` || 0};
+    width: ${({ beforeWidth }: ProgressBarStyle) => `${beforeWidth}%` || 0};
     background-color: ${() => colors.opacityGray};
     position: absolute;
     top: 0;

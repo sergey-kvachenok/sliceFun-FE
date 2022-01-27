@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CustomTabs from '../../shared/Tabs';
@@ -6,7 +6,7 @@ import Episode from './Episode';
 import VideoEpisode from './VideoEpisode';
 import Button from '../../shared/Button';
 import { ListWrapper } from '../../../styles/containers';
-import {ILatestShow, IVideo} from '../../../constants/interfaces'
+import { ILatestShow, IVideo } from '../../../constants/interfaces';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -47,10 +47,10 @@ const getTabs = (t: Function) => [
 ];
 
 type EpisodesProps = {
-latestEpisodes: ILatestShow[],
-premiumEpisodes: ILatestShow[],
-video: IVideo[]
-}
+  latestEpisodes: ILatestShow[];
+  premiumEpisodes: ILatestShow[];
+  video: IVideo[];
+};
 
 const Episodes = ({ latestEpisodes = [], premiumEpisodes = [], video = [] }: EpisodesProps) => {
   const { t } = useTranslation(['episodes', 'common', 'tabs']);

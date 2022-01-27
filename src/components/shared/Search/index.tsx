@@ -26,8 +26,8 @@ const StyledInput = styled.input`
 `;
 
 type SearchProps = {
-  handleSearchChange: Function
-} 
+  handleSearchChange: Function;
+};
 
 const Search = ({ handleSearchChange }: SearchProps) => {
   const { t } = useTranslation(['shows']);

@@ -31,11 +31,11 @@ const Panel = styled.div`
 `;
 
 type HeaderProps = {
-  mainImage: string,
-  title: string,
-  verified: boolean,
-  handleSearchChange: Function
-}
+  mainImage: string;
+  title: string;
+  verified: boolean;
+  handleSearchChange: Function;
+};
 
 const Header = ({ mainImage, title, verified, handleSearchChange }: HeaderProps) => {
   const { t } = useTranslation(['common']);
@@ -49,8 +49,8 @@ const Header = ({ mainImage, title, verified, handleSearchChange }: HeaderProps)
 
         <div className="buttons">
           <Button variant="outlined" title={t('manageSubscriptions')} customStyles={{ mr: 2 }} onClick={() => {}} />
-          
-          <Button variant="outlined" title={t('share')} onClick={() => {}}/>
+
+          <Button variant="outlined" title={t('share')} onClick={() => {}} />
         </div>
       </Panel>
 

@@ -5,11 +5,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Verified from '../Verified';
 import { StyledLink } from '../../../styles/containers';
 import Typography from '@mui/material/Typography';
-import {IBaseShow} from '../../../constants/interfaces'
+import { IBaseShow } from '../../../constants/interfaces';
 
 type ShowProps = {
-  show: IBaseShow
-}
+  show: IBaseShow;
+};
 
 const Show = ({ show }: ShowProps) => {
   const { title, image, id, verified } = show || {};

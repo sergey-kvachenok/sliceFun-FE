@@ -21,8 +21,8 @@ const Wrapper = styled.div`
 `;
 
 type VerifiedProps = {
-  verified: boolean
-}
+  verified: boolean;
+};
 
 const Verified = ({ verified }: VerifiedProps) => {
   const { t } = useTranslation(['verified']);

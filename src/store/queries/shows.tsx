@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {ISingleShow, IPopularShow} from '../../constants/interfaces'
+import { ISingleShow, IPopularShow } from '../../constants/interfaces';
 
 type ShowProps = {
-  id: number,
-  search: string
-}
+  id: number;
+  search: string;
+};
 
 // Define a service using a base URL and expected endpoints
 export const showsApi = createApi({
@@ -30,7 +30,7 @@ export const showsApi = createApi({
       query: () => ({ url: `shows/popular` }),
       transformResponse: (response: IPopularShow[], meta, arg) => response,
     }),
-    getLibrary: builder.query<IPopularShow[], {category: String}>({
+    getLibrary: builder.query<IPopularShow[], { category: String }>({
       query: args => {
         const { category } = args;
         return {
