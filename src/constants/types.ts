@@ -1,18 +1,19 @@
 export type ColumnType = {
-  label: string
-}
+  label: string;
+};
 
 export type Row = {
-  [name: string]: React.ReactElement
-}
+  [name: string]: React.ReactElement;
+};
 
 export type TabType = {
-  slug?: string,
-  label: string
-}
+  slug?: string;
+  label: string;
+  clickHandler: Function;
+};
 
 export type HeadlineType = {
-  title: string,
-  description: string,
-  image: string
-}
+  title: string;
+  description: string;
+  image: string;
+};
