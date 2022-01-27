@@ -58,7 +58,7 @@ const Episodes = ({ latestEpisodes = [], premiumEpisodes = [], video = [] }) => 
       <ListWrapper>
         <div className="primary-text">{t('latestEpisodes')}</div>
         {latestEpisodes?.map(episode => (
-          <Episode key={episode.id} episode={episode} />
+          <Episode dataTestId="latest-episode" key={episode.id} episode={episode} />
         ))}
         <ButtonContainer>
           <Button variant="outlined" title={t('common:loadMore')} onClick={handleLoadMoreClick} />

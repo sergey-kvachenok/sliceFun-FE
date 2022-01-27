@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Episode = ({ episode }) => {
+const Episode = ({ episode, dataTestId = '' }) => {
   const { t } = useTranslation(['common']);
   const dispatch = useDispatch();
   const { isPlaying, id } = useSelector(({ player }) => player);
@@ -94,7 +94,7 @@ const Episode = ({ episode }) => {
         {dayjs(new Date(date)).format('MMM D, YYYY')}
       </div>
 
-      <div className="info">
+      <div data-testid={dataTestId} className="info">
         <div className="header">
           {isCurrentEpisode && isPlaying ? (
             <PauseCircleOutlineOutlinedIcon
@@ -111,7 +111,7 @@ const Episode = ({ episode }) => {
 
         <div className={`description secondary-text ${descriptionClass}`}>{extendedDescription}</div>
 
-        <Button testId="expand-more" title={t('expandMore')} onClick={handleExpandClick} customStyles={{ mt: 1 }} />
+        <Button dataTestId="expand-more" title={t('expandMore')} onClick={handleExpandClick} customStyles={{ mt: 1 }} />
       </div>
     </Wrapper>
   );

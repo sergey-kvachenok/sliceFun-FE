@@ -41,10 +41,10 @@ describe('HeadShow', () => {
     const title = getByText(showData.title);
     expect(title).toBeVisible();
 
-    const playButton = await findByTestId('play-icon');
+    const playButton = await findByTestId('head-show-play-icon');
     expect(playButton).toBeInTheDocument();
 
-    const redirectToCurrentShowLink = await findByTestId('custom-button');
+    const redirectToCurrentShowLink = await findByTestId('head-show-go-to-show-button');
     expect(redirectToCurrentShowLink).toBeInTheDocument();
   });
 
@@ -56,7 +56,7 @@ describe('HeadShow', () => {
       type: 'player/setIsPlaying',
     };
 
-    const playButton = await findByTestId('play-icon');
+    const playButton = await findByTestId('head-show-play-icon');
     expect(playButton).toBeInTheDocument();
 
     fireEvent.click(playButton);
@@ -74,14 +74,14 @@ describe('HeadShow', () => {
 
     const { findByTestId } = renderWithProviders(<HeadShow showData={showData} />);
 
-    const pauseButton = await findByTestId('pause-icon');
+    const pauseButton = await findByTestId('head-show-pause-icon');
     expect(pauseButton).toBeInTheDocument();
   });
 
   it('should redirect to a show page when "Go to Show" button was clicked', async () => {
     const { findByTestId } = renderWithProviders(<HeadShow showData={showData} />);
 
-    const redirectToCurrentShowLink = await findByTestId('custom-button');
+    const redirectToCurrentShowLink = await findByTestId('head-show-go-to-show-button');
     fireEvent.click(redirectToCurrentShowLink);
 
     expect(mockedUsedNavigate).toHaveBeenCalledWith('/shows/1');
@@ -93,7 +93,7 @@ describe('HeadShow', () => {
     const mainImage = await findByTestId('background-image');
     expect(mainImage).toHaveAttribute('src', showData.mainImage);
 
-    const posterImage = await findByTestId('podcast-poster');
+    const posterImage = await findByTestId('head-show-image');
     expect(posterImage).toHaveAttribute('src', showData.image);
   });
 });

@@ -25,7 +25,11 @@ const CustomTable = ({ rows = [], columns = [] }) => {
           {rows.map((row, index) => {
             const keys = Object.keys(row);
             return (
-              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableRow
+                data-testid="main-table-row"
+                key={index}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
                 {keys.map(key => (
                   <TableCell key={key} component="th" scope="row">
                     {row[key]}

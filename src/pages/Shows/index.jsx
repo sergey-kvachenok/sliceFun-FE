@@ -37,7 +37,7 @@ const Shows = () => {
     <Grid container spacing={4} sx={{ padding: 0 }}>
       {data.map(show => (
         <Grid item xs={12} sm={6} md={4} lg={3} sx={{ justifyContent: 'center', display: 'flex' }} key={show.title}>
-          <Show show={show} />
+          <Show dataTestId="searched-shows-item" show={show} />
         </Grid>
       ))}
     </Grid>

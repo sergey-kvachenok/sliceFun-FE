@@ -26,7 +26,7 @@ const LatestShows = () => {
         <Grid container spacing={4}>
           {transformedData.map(show => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={show.id}>
-              <Show show={show} />
+              <Show dataTestId="latest-shows-item" show={show} />
             </Grid>
           ))}
         </Grid>

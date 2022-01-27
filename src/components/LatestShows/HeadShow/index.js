@@ -67,25 +67,27 @@ const HeadShow = ({ showData }) => {
       <div className="info">
         <div className="content-container">
           <ImageWrapper height={120} width={120}>
-            <img data-testid="podcast-poster" height="120" width="120" src={image} alt="Podcast poster" />
+            <img data-testid="head-show-image" height="120" width="120" src={image} alt="Podcast poster" />
           </ImageWrapper>
 
           <div>
             <Verified verified={verified} />
 
-            <div className="primary-text">{title}</div>
+            <div data-testid="head-show-title" className="primary-text">
+              {title}
+            </div>
 
             <div className="header">
               {isPlaying ? (
                 <PauseCircleOutlineOutlinedIcon
-                  data-testid="pause-icon"
+                  data-testid="head-show-pause-icon"
                   fontSize="large"
                   className="pointer play-pause-button"
                   onClick={togglePlayPause}
                 />
               ) : (
                 <PlayCircleOutlinedIcon
-                  data-testid="play-icon"
+                  data-testid="head-show-play-icon"
                   fontSize="large"
                   className="pointer play-pause-button"
                   onClick={togglePlayPause}
@@ -93,6 +95,7 @@ const HeadShow = ({ showData }) => {
               )}
 
               <Button
+                dataTestId="head-show-go-to-show-button"
                 variant="outlined"
                 title={t('headShowButton')}
                 customStyles={{ ml: 2 }}

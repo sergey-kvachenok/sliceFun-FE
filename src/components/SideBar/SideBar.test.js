@@ -24,7 +24,7 @@ describe('SideBar', () => {
     expect(latestLinkLabel).toBeVisible();
     expect(invisibleRuLabel).not.toBeInTheDocument();
 
-    const ruButton = await findByTestId('ru-lang');
+    const ruButton = await findByTestId('rus-flag-button');
     fireEvent.click(ruButton);
 
     const visibleRuLabel = getByText(sidebarRu.latest);
