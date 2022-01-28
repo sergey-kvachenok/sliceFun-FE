@@ -52,11 +52,11 @@ const HeadShow = ({ showData }) => {
       title,
     };
 
-    if (!id) {
+    if (!id || id !== showId) {
       dispatch(setPlayerInfo(params));
     }
 
-    if (id) {
+    if (id && id === showId) {
       dispatch(setIsPlaying(!isPlaying));
     }
   };
